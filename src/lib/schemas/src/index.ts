@@ -1,2 +1,2 @@
-export * from "./api/store-details";
+export * from "./api/storeDetails";
 export * from "./api/errorMessage";

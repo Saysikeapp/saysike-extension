@@ -14,6 +14,24 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "strict": true
+    "strict": true,
+    "paths": {
+      "@": ["./src"],
+      "@/*": ["./src/*"],
+      "~": ["./src"],
+      "~/*": ["./src/*"],
+      "@@": ["."],
+      "@@/*": ["./*"],
+      "~~": ["."],
+      "~~/*": ["./*"],
+      "@saysike/ui": ["./src/lib/ui/src"],
+      "@saysike/ui/*": ["./src/lib/ui/src/*"],
+      "@saysike/utils": ["./src/lib/utils/src"],
+      "@saysike/utils/*": ["./src/lib/utils/src/*"],
+      "@saysike/http": ["./src/lib/http/src"],
+      "@saysike/http/*": ["./src/lib/http/src/*"],
+      "@saysike/schemas": ["./src/lib/schemas/src"],
+      "@saysike/schemas/*": ["./src/lib/schemas/src/*"]
+    }
   }
 }

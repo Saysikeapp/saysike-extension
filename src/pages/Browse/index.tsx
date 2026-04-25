@@ -1,7 +1,7 @@
 import { Icon, Typography } from "@saysike/ui"; // Typography used for HelperText
 import type { TIconSrc } from "@saysike/ui";
 import { ReactNode } from "react";
-import { BLUE_ICON_FILTER } from "@/utils/styles";
+import { BLUE_ICON_FILTER } from "@/lib/styles";
 
 const FEATURES: { icon: TIconSrc; text: string }[] = [
   { icon: "label-tag.svg", text: "Coupon codes applied at checkout" },

@@ -1,7 +1,7 @@
-import { authClient } from "@/utils/authClient";
+import { authClient } from "@/lib/authClient";
 import { Button, Icon, ThemeToggle } from "@saysike/ui";
 import { useTheme } from "../../contexts/ThemeContext";
-import { BLUE_ICON_FILTER } from "@/utils/styles";
+import { BLUE_ICON_FILTER } from "@/lib/styles";
 
 const Account = () => {
   const { data } = authClient.useSession();

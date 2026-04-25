@@ -5,7 +5,7 @@ import {
   getActiveTabId,
   getCurrentUrl,
   sendRuntimeMessage,
-} from "@/utils/browerAPI";
+} from "@/lib/browerAPI";
 
 export const STORE_DETAILS_QUERY_KEY = "store-details";
 

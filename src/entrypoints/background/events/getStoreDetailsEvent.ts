@@ -1,4 +1,4 @@
-import { ChromeMessageRequest } from "@/utils/browerAPI";
+import { ChromeMessageRequest } from "@/lib/browerAPI";
 import { makeAIStoreDetailsGETRequest } from "../requests/makeAIStoreDetailsGETRequest";
 import { GETStoreDetailsResponse } from "@saysike/schemas";
 import { filterAndFormatDomain } from "@saysike/utils";

@@ -4,7 +4,7 @@ import { Button, Icon, Typography } from "@saysike/ui";
 import { MoreDetailsModal } from "./MoreDetailsModal";
 import { CodeDealButton } from "./CodeDealButton";
 import dayjs from "dayjs";
-import { highlightText } from "@/utils/highlightText";
+import { highlightText } from "@/lib/highlightText";
 import { percentInStringRegex } from "@saysike/utils";
 import { GETStoreDetailsResponse } from "@saysike/schemas";
 

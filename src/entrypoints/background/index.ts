@@ -1,7 +1,7 @@
 import {
   BackgroundEventMethods,
   ChromeMessageRequest,
-} from "@/utils/browerAPI";
+} from "@/lib/browerAPI";
 import { getOrCacheStoreDetails } from "./cache/cache";
 
 export default defineBackground(() => {

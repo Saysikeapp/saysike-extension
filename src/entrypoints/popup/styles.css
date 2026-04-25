@@ -1,4 +1,4 @@
-@import "@saysike/tailwind-config";
+@import "../../lib/tailwind-config/src/styles.css";
 
 html,
 body {

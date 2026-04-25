@@ -1,3 +1,3 @@
-@import "@saysike/tailwind-config";
+@import "../../../tailwind-config/src/styles.css";
 
 @source "../**/*.{ts,tsx,js,jsx}";

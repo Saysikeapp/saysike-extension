@@ -1,7 +1,7 @@
 import { CodesAndDealsItem } from "./CodesAndDealsItem";
 import { useStoreDetails } from "@/hooks/useStoreDetails";
 import { Icon } from "@saysike/ui";
-import { BLUE_ICON_FILTER } from "@/utils/styles";
+import { BLUE_ICON_FILTER } from "@/lib/styles";
 
 const CodesAndDealsList = ({
   searchTerm,

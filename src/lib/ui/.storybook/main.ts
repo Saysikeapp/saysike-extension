@@ -1,6 +1,7 @@
 import { fileURLToPath } from "node:url";
 import { dirname } from "node:path";
 import type { StorybookConfig } from "@storybook/react-vite";
+import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 
 const config: StorybookConfig = {
@@ -21,7 +22,7 @@ const config: StorybookConfig = {
   async viteFinal(config) {
     return {
       ...config,
-      plugins: [...(config.plugins || []), tsConfigPaths()],
+      plugins: [...(config.plugins || []), tailwindcss(), tsConfigPaths()],
     };
   },
 };
