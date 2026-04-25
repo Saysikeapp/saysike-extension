@@ -1,0 +1,10 @@
+{
+  "extends": "@saysike/tsconfig/base.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "rootDir": "./src",
+    "tsBuildInfoFile": ".tsbuildinfo"
+  },
+  "include": ["./src"],
+  "exclude": ["node_modules", "dist"]
+}

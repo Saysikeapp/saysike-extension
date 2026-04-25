@@ -1,0 +1,22 @@
+{
+  "name": "@saysike/utils",
+  "version": "0.0.1",
+  "description": "Utility functions for Saysike",
+  "private": true,
+  "main": "./src/index.ts",
+  "exports": {
+    "import": "./src/index.ts",
+    "require": "./src/index.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@saysike/tsconfig": "workspace:*"
+  }
+}

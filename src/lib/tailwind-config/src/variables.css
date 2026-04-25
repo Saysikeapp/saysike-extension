@@ -1,0 +1,67 @@
+:root {
+  --saysike-blue-primary: #0088ff;
+  --saysike-blue-secondary: #0040ff;
+  --black: #000000;
+  --white: #ffffff;
+
+  --danger-color: #eb0700;
+  --warning-color: #e5bb3f;
+  --success-color: #4bb543;
+
+  --data-metric-blue: #1838d4;
+  --data-metric-pink: #d002eb;
+  --highlight-green: #31f729;
+  --border-grey: #c7c7c7;
+  --background-grey: #cacaca;
+
+  --blue: #4b90d3;
+  --grey: #cacaca;
+  --red: #ff2d12;
+  --yellow: #e8e24e;
+  --green: #2fa46b;
+
+  /* ── Surface & text tokens (light mode defaults) ── */
+  --surface-primary: #ffffff;
+  --surface-secondary: #f5f5f5;
+  --surface-tertiary: #cacaca;
+  --surface-elevated: #ffffff;
+  --text-primary: #0a0a0a;
+  --text-secondary: #3d3d3d;
+  --text-tertiary: #5e5e5e;
+  --text-inverted: #ffffff;
+  --border-color: #c7c7c7;
+  --ring-color: #0088ff;
+}
+
+/* ── Dark mode overrides (activated by .dark class on <html>) ── */
+.dark {
+  /* --saysike-blue-primary: #3da2ff;
+  --saysike-blue-secondary: #5c7aff; */
+
+  --danger-color: #ff4d4a;
+  --warning-color: #f0c95c;
+  --success-color: #6dd66a;
+
+  --data-metric-blue: #4a66f5;
+  --data-metric-pink: #e54cf7;
+  --highlight-green: #52ff4a;
+  --border-grey: #3a3a3a;
+  --background-grey: #1a1a1a;
+
+  --blue: #6eaadf;
+  --grey: #3a3a3a;
+  --red: #ff5c47;
+  --yellow: #f0e86e;
+  --green: #4fc48a;
+
+  --surface-primary: #0f0f0f;
+  --surface-secondary: #1a1a1a;
+  --surface-tertiary: #2a2a2a;
+  --surface-elevated: #1e1e1e;
+  --text-primary: #f5f5f5;
+  --text-secondary: #c2c2c2;
+  --text-tertiary: #969696;
+  --text-inverted: #111111;
+  --border-color: #3a3a3a;
+  --ring-color: #3da2ff;
+}

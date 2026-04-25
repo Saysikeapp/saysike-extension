@@ -1,0 +1,253 @@
+{/* Icon.mdx */}
+
+import {
+  ArgTypes,
+  Canvas,
+  Meta,
+  IconGallery,
+  IconItem,
+} from "@storybook/addon-docs/blocks";
+
+import Icon from "./Icon";
+import * as IconStories from "./Icon.stories";
+import { icon_src_array } from "./icon_src_array";
+
+<Meta of={IconStories} />
+
+# Icon
+
+## Icon location and styles
+
+Icons are hosted on our [CDN](https://d3dlfflhrot7qc.cloudfront.net)
+
+_Most_ of our icons are coming from the [Orion icon library](https://www.orioniconlibrary.com/).
+
+A select number come from MUI or are custom made where Orion has no alternative.
+
+IMPORTANT - we can only use up to 180 in total from Orion under our license, including variations.
+
+They come in two major groups: `line` and `solid` (`color` and `flat` also exist, but we have very few if any right now). Each group is a folder on the CDN.
+
+When running process icons, all icons (regardles of type) should be in the base folder of icon-input, and each contain a `desc` tag that describes what kind it is, like below:
+
+```tsx
+<title>Add To Card</title>
+<desc>A (solid/line/color) styled icon from Orion Icon Library.</desc>
+```
+
+To display the "agenda" icon in the `solid` style, you can specify a `src` of `solid/add-to-cart.svg`. As most icons used in our designs are of the style `solid`, if you omit the style-folder, it will default to it. `<Icon src="add-to-cart.svg">` is equivalent to `<Icon src="solid/add-to-cart.svg" />`.
+
+<Canvas of={IconStories.Primary} />
+<ArgTypes of={IconStories} />
+
+## Colours
+
+By default, icons will take the colour of the text node they're in.
+
+<div className="text-primary">
+  This text has the primary colour applied to it, as it's inside a div that has
+  the "text-primary" class.
+  <br />
+  This icon will have the same colour: <Icon src="add-to-cart.svg" />
+</div>
+
+```tsx
+<div className="text-primary">
+  This text has the primary colour applied to it, as it's inside a div that has
+  the "text-primary" class.
+  <br />
+  This icon will have the same colour:
+  <Icon src="add-to-cart.svg" />
+</div>
+```
+
+Based on text colour class names, Icons can receive dedicated colour class names: `icon-primary`, `icon-danger`, etc.
+
+Icon component with a css class of `icon-danger`: <Icon src="add-to-cart.svg" className="icon-danger" />
+
+```tsx
+<Icon src="add-to-cart.svg" className="icon-danger" />
+```
+
+## Sizes
+
+Icons have a size prop, the value ranges from 1 to 10, by .5 increments. They are based on tailwind's default 4px grid; each size value is multiplied by 4 to give the maximum width and height.
+
+<table>
+  <thead>
+    <tr>
+      <th>Size</th>
+      <th>Dimensions (max width / max height)</th>
+      <th>Icon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>4px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={1} />
+      </td>
+    </tr>
+    <tr>
+      <td>1.5</td>
+      <td>6px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={1.5} />
+      </td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>8px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={2} />
+      </td>
+    </tr>
+    <tr>
+      <td>2.5</td>
+      <td>10px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={2.5} />
+      </td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>12px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={3} />
+      </td>
+    </tr>
+    <tr>
+      <td>3.5</td>
+      <td>14px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={3.5} />
+      </td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>16px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={4} />
+      </td>
+    </tr>
+    <tr>
+      <td>4.5</td>
+      <td>18px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={4.5} />
+      </td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>20px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={5} />
+      </td>
+    </tr>
+    <tr>
+      <td>5.5</td>
+      <td>22px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={5.5} />
+      </td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>24px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={6} />
+      </td>
+    </tr>
+    <tr>
+      <td>6.5</td>
+      <td>26px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={6.5} />
+      </td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>28px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={7} />
+      </td>
+    </tr>
+    <tr>
+      <td>7.5</td>
+      <td>30px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={7.5} />
+      </td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>32px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={8} />
+      </td>
+    </tr>
+    <tr>
+      <td>8.5</td>
+      <td>34px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={8.5} />
+      </td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>36px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={9} />
+      </td>
+    </tr>
+    <tr>
+      <td>9.5</td>
+      <td>38px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={9.5} />
+      </td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>40px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={10} />
+      </td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>160px</td>
+      <td>
+        <Icon src="add-to-cart.svg" size={40} />
+      </td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>320px</td>
+      <td>
+        <Icon src="color/sales-up.svg" size={80} />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## How to add icons
+
+In the repository, you need to put the **full** list of icons in `./scripts/icons-input/`. The export from Orion's website will be a zip file containing all the icons at the root, without any folder tree.
+
+Then, open a terminal and run `npm run prepare-icons`. This script will do 3 things:
+
+- Dispatch the icons into style-folders (color, flat, line and solid), also adding a css class onto the svg element to mark the style (`icon-solid` for example).
+- Generate a type for the src prop of the Input component.
+- Generate Javascript array listing all the different possibilities for the `src` prop, used to display all the possible values on this page below.
+
+## Icon list
+
+<IconGallery>
+  {icon_src_array.map((src) => (
+    <IconItem name={src} key={src}>
+      <Icon size="8" src={src} />
+    </IconItem>
+  ))}
+</IconGallery>

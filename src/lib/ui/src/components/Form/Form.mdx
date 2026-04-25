@@ -1,0 +1,71 @@
+# Form
+
+The react form hook provides the perfect way to track our input components through it's context.
+We can also just pass the form object down either as props, or in our own context if we need to be able to
+access these functions in a component that lives outside of the form context.
+
+However, this poses some typing issues when using the Zod resolver.
+
+For this reason, we have created a small abstraction of the original form hook to provide input typing
+based on the Zod resolver.
+
+### Notes
+
+You should define the validation type mode in the Zod schema. If you don't, the mode will be set to all and
+to revalidate onChange.
+
+All fields are required if not defined otherwise in the Zod schema.
+Default values need to be included in the form definition, but they will be typed based on the Zod schema,
+so typescript should tell you if you have defined an incorrect value for the schema; for example, defining
+a number when string is required in the Zod schema.
+
+The validation for required will trigger onSubmit. The onSubmit is automatically handled using the
+internal react hook form handleSubmit, so it will not submit without validation rules passing first.
+
+## Example Code
+
+Define your form as such
+
+```
+export const schema = z.object({
+   first_name: z.string().min(2).max(10),
+   last_name: z.string().min(2).max(10),
+})
+
+
+export const Component = () => {
+   const form = useForm({
+       schema,
+       mode: 'all',
+       reValidateMode: 'onChange',
+       defaultValues: {
+           first_name: '',
+           last_name: '',
+       }
+   })
+
+
+   const onSubmit = () => {
+       console.log(form.getValues())
+   }
+
+
+<Form form={dummyForm} onSubmit={() => onSubmit()} className={'space-y-5'}>
+   <TextInput name="first_name" />
+   <TextInput name="last_name" />
+</Form>
+```
+
+Everything will be registered out of the box. If you define an onChange or onBlur, the field value will not be overridden
+and both functions will fire. The value argument will be passed, not the event.
+
+```
+   <Text Input name="first_name" onChange="(value: string) => console.log(`My name is: ${value}`)/>"
+```
+
+Error messages are defined using the Zod Schema.
+These will be automatically applied.
+
+```
+   first_name: z.string().min(2, 'First Name must be at least 2 characters').max(10, 'First name must be less than 10 characters'),
+```

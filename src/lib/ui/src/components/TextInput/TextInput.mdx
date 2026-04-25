@@ -1,0 +1,70 @@
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
+import * as TextInputStories from "./TextInput.stories";
+import { Input } from "./TextInput";
+
+<Meta of={TextInputStories} />
+
+# Text Input
+
+The text input comes in two forms, the manual input and the form input.
+
+As with all inputs (excluding manual inputs), please see the Form documentation first. For storybook,
+the form needs to be wrapped in the StoryForm wrapper, as seen in the code display.
+
+## Form Input
+
+This input will be used the majority of the time.
+
+To use the text input, the only thing that is mandatory is the name field. This field is typed
+based on the Zod Schema defined in the Form.
+
+You do not need to register the input manually.
+
+<Canvas of={TextInputStories.Primary} />
+
+## Examples
+
+The basic input is defined as so:
+
+```typescript jsx
+   <Input.Form name={"name"}/>
+```
+
+The input contains the normal functionality of an HTML input, so you can pass an onChange or onBlur to it.
+The React Form Hook onChange/onBlur will always fire alongside your custom actions.
+
+```typescript jsx
+   <Input.Form name={"name"} onChange={() => console.log('OnChange!')} disabled/>
+```
+
+This input can be used as a ref
+
+```typescript
+const ref = useRef(null)
+ref.current.focus()
+<Input.Form name={"name"} ref={ref}/>
+```
+
+You can also use a manual input that can exist outside of the useForm wrapper.
+This does not provide error messages.
+
+```typescript jsx
+   <Input.Form name={"name"} onChange={() => setValue('Beer')} value={value}/>
+```
+
+{/* TODO <><> this is quite cool and useful, maybe abstract and add to all mdx's? */}
+
+Full Story Examples
+
+<div>
+  {Object.keys(TextInputStories).map((key) => {
+   if (key === "default" || key === "__namedExportsOrder") return null;
+
+    return <div>
+    <h3>{key}</h3>
+       <Canvas of={TextInputStories[key]} />
+    </div>
+
+})}
+
+</div>

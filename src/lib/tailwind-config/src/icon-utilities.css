@@ -1,0 +1,38 @@
+@layer utilities {
+  .icon {
+    display: block;
+  }
+
+  .icon svg {
+    display: block;
+  }
+
+  /* Default behaviors based on your svg class */
+  .icon svg.icon-line * {
+    fill: none;
+    stroke: currentColor;
+  }
+
+  .icon svg.icon-solid * {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  /* Force overrides (replaces icon-stroke-none / icon-fill-none branches) */
+  .icon.icon-stroke-none svg * {
+    stroke: none !important;
+  }
+
+  .icon.icon-fill-none svg * {
+    fill: none !important;
+  }
+
+  /* Explicit “use currentColor” helpers (replaces icon-fill-* / icon-stroke-*) */
+  .icon.icon-fill-current svg * {
+    fill: currentColor !important;
+  }
+
+  .icon.icon-stroke-current svg * {
+    stroke: currentColor !important;
+  }
+}

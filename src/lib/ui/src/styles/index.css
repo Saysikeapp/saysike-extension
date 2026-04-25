@@ -1,0 +1,3 @@
+@import "@saysike/tailwind-config";
+
+@source "../**/*.{ts,tsx,js,jsx}";

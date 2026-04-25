@@ -1,0 +1,191 @@
+@import "./variables.css";
+@import "tailwindcss";
+@import "./icon-utilities.css";
+
+/* Enable class-based dark mode: `dark:` utilities activate when <html class="dark"> */
+@custom-variant dark (&:is(.dark *));
+
+@source "../../ui/src/**/*.{ts,tsx,js,jsx}";
+
+@layer base {
+  button,
+  [role="button"],
+  a,
+  summary,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    cursor: pointer;
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, var(--border-color, currentcolor));
+  }
+}
+
+/* Theme tokens (CSS-first) */
+@theme {
+  /* fontSize */
+  --text-2xs: 0.625rem;
+
+  /* letterSpacing */
+  --tracking-l: 1.4px;
+  --tracking-xl: 1.8px;
+  --tracking-2xl: 2px;
+
+  /* spacing (dot uses underscore in CSS token name) */
+  --spacing-4_5: 16px;
+
+  /* lineHeight */
+  --leading-md: 1.125rem;
+  --leading-2xl: 1.875rem;
+
+  /* borderWidth */
+  --border-width-1: 0.0625rem;
+  --border-width-2: 0.125rem;
+
+  /*
+    colors
+    Tailwind v4 maps `--color-*` tokens to color utilities.
+    These reference your existing CSS vars directly at runtime.
+  */
+  --color-primary: var(--saysike-blue-primary);
+  --color-secondary: var(--saysike-blue-secondary);
+  --color-success: var(--success-color);
+  --color-warning: var(--warning-color);
+  --color-danger: var(--danger-color);
+
+  --color-blue: var(--blue);
+  --color-grey: var(--grey);
+  --color-green: var(--green);
+  --color-red: var(--red);
+
+  /*
+    Light/dark variants: CSS approximation (replaces Color().lighten/darken)
+    Adjust percentages to taste.
+  */
+  --color-primary-light: color-mix(
+    in oklab,
+    var(--saysike-blue-primary) 85%,
+    white
+  );
+  --color-primary-dark: color-mix(
+    in oklab,
+    var(--saysike-blue-primary) 85%,
+    black
+  );
+  --color-primary-alt: color-mix(
+    in oklab,
+    var(--saysike-blue-primary) 92%,
+    black
+  );
+  --color-primary-focus: color-mix(
+    in oklab,
+    var(--saysike-blue-primary) 50%,
+    transparent
+  );
+
+  --color-secondary-light: color-mix(
+    in oklab,
+    var(--saysike-blue-secondary) 85%,
+    white
+  );
+  --color-secondary-dark: color-mix(
+    in oklab,
+    var(--saysike-blue-secondary) 85%,
+    black
+  );
+  --color-secondary-alt: color-mix(
+    in oklab,
+    var(--saysike-blue-secondary) 92%,
+    black
+  );
+  --color-secondary-focus: color-mix(
+    in oklab,
+    var(--saysike-blue-secondary) 50%,
+    transparent
+  );
+
+  --color-success-light: color-mix(in oklab, var(--success-color) 85%, white);
+  --color-success-dark: color-mix(in oklab, var(--success-color) 85%, black);
+  --color-success-alt: color-mix(in oklab, var(--success-color) 92%, black);
+  --color-success-focus: color-mix(
+    in oklab,
+    var(--success-color) 50%,
+    transparent
+  );
+
+  --color-warning-light: color-mix(in oklab, var(--warning-color) 85%, white);
+  --color-warning-dark: color-mix(in oklab, var(--warning-color) 85%, black);
+  --color-warning-alt: color-mix(in oklab, var(--warning-color) 92%, black);
+  --color-warning-focus: color-mix(
+    in oklab,
+    var(--warning-color) 50%,
+    transparent
+  );
+
+  --color-danger-light: color-mix(in oklab, var(--danger-color) 85%, white);
+  --color-danger-dark: color-mix(in oklab, var(--danger-color) 85%, black);
+  --color-danger-alt: color-mix(in oklab, var(--danger-color) 92%, black);
+  --color-danger-focus: color-mix(
+    in oklab,
+    var(--danger-color) 50%,
+    transparent
+  );
+
+  --color-light-blue: color-mix(in oklab, var(--blue) 85%, white);
+  --color-mid-blue: var(--blue);
+  --color-dark-blue: color-mix(in oklab, var(--blue) 50%, black);
+
+  --color-light-grey: color-mix(in oklab, var(--grey) 85%, white);
+  --color-dark-grey: color-mix(in oklab, var(--grey) 85%, black);
+
+  /* ── Surface, text & border tokens (swap automatically in dark mode) ── */
+  --color-surface-primary: var(--surface-primary);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-surface-tertiary: var(--surface-tertiary);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-inverted: var(--text-inverted);
+  --color-border: var(--border-color);
+  --color-ring: var(--ring-color);
+
+  /* animations (v4 uses --animate-*) */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+/* keyframes */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}

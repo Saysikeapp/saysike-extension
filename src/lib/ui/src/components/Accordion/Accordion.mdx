@@ -1,0 +1,59 @@
+{/* Accordion.mdx */}
+
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
+import * as AccordionStories from "./Accordion.stories";
+
+<Meta of={AccordionStories} />
+
+# Accordion
+
+The Accordion component is a flexible UI primitive for showing and hiding content sections.  
+It uses Radix UI’s accordion under the hood and supports both single and multiple open items.
+
+## Basic Usage
+
+To use the Accordion, wrap your content in the `Accordion` component and use `AccordionItem`, `AccordionTrigger`, and `AccordionContent` for each section.
+
+<Canvas of={AccordionStories.Primary} />
+
+## Example
+
+Here’s a basic example:
+
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Section 1</AccordionTrigger>
+    <AccordionContent>Content for section 1.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Section 2</AccordionTrigger>
+    <AccordionContent>Content for section 2.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Props
+
+- `type`: `"single"` or `"multiple"` — controls whether one or many items can be open.
+- `collapsible`: Allows closing the currently open item (only for `"single"` type).
+- Each `AccordionItem` must have a unique `value` prop.
+
+## Notes
+
+- Use `AccordionTrigger` for clickable headers.
+- Place your content inside `AccordionContent`.
+- The chevron icon automatically rotates when the section is open.
+
+## Customization
+
+You can pass additional classes to any part of the Accordion for custom styling.
+
+```tsx
+<AccordionItem value="item-3" className="bg-gray-50">
+  <AccordionTrigger className="text-blue-600">Custom Trigger</AccordionTrigger>
+  <AccordionContent>Custom styled content.</AccordionContent>
+</AccordionItem>
+```
+
+---
