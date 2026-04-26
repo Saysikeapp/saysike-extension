@@ -11,7 +11,6 @@ export const ManualButton = forwardRef<HTMLButtonElement, TButtonProps>(
       isLoading,
       className = "",
       size = "md",
-      _active,
       asChild = false,
       ...rest
     } = props;
