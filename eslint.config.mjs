@@ -38,7 +38,14 @@ export default tseslint.config(
     ],
     languageOptions: {
       parserOptions: {
-        projectService: true,
+        projectService: {
+          // Allow config files (.mjs, postcss.config.js etc.) that aren't in tsconfig
+          allowDefaultProject: [
+            "*.mjs",
+            "*.config.js",
+            "src/lib/ui/postcss.config.js",
+          ],
+        },
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -54,7 +61,9 @@ export default tseslint.config(
 
   // Frontend (extension + ui)
   {
-    files: ["apps/**/*.{ts,tsx}", "packages/ui/**/*.{ts,tsx}"],
+    files: ["src/**/*.{ts,tsx}"],
+    // Note: this used to target apps/** and packages/ui/** (monorepo paths)
+    // but this is a flat project — all source is under src/
     plugins: {
       react: pluginReact,
       "react-hooks": pluginReactHooks,
@@ -68,6 +77,7 @@ export default tseslint.config(
       ...pluginReactHooks.configs.recommended.rules,
       ...pluginQuery.configs.recommended.rules,
       "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off", // TypeScript handles prop type checking
     },
   },
 
@@ -82,14 +92,6 @@ export default tseslint.config(
     },
   },
 
-  // Storybook
-  {
-    files: ["**/*.stories.{ts,tsx}", "**/*.stories.mdx"],
-    rules: {
-      "@typescript-eslint/explicit-function-return-type": "off",
-    },
-  },
-
   // Global rule overrides
   {
     rules: {
@@ -99,6 +101,27 @@ export default tseslint.config(
       "@typescript-eslint/no-floating-promises": "error",
       "@typescript-eslint/explicit-function-return-type": "warn",
       "prefer-destructuring": ["error", { object: true, array: false }],
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { varsIgnorePattern: "^_", argsIgnorePattern: "^_" },
+      ],
+    },
+  },
+
+  // Entrypoints (background/content/popup scripts) — console is intentional
+  {
+    files: ["src/entrypoints/**/*.{ts,tsx}"],
+    rules: {
+      "no-console": "off",
+    },
+  },
+
+  // Storybook
+  {
+    files: ["**/*.stories.{ts,tsx}", "**/*.stories.mdx"],
+    rules: {
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "no-console": "off",
     },
   },
 );

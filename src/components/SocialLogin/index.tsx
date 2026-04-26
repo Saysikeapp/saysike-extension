@@ -13,14 +13,14 @@ export const SocialLogin = ({
 }): ReactNode => {
   const loginWithGoogle = (): void => {
     void browser.tabs.create({
-      url: import.meta.env.WXT_BASE_SERVER_URI,
+      url: import.meta.env.WXT_BASE_SERVER_URI as string,
       active: true,
     });
   };
 
   const loginWithFacebook = (): void => {
     void browser.tabs.create({
-      url: import.meta.env.WXT_BASE_SERVER_URI,
+      url: import.meta.env.WXT_BASE_SERVER_URI as string,
       active: true,
     });
   };

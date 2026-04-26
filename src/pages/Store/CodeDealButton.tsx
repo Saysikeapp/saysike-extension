@@ -5,7 +5,7 @@ import { GETStoreDetailsResponse } from "@saysike/schemas";
 
 export const CodeDealButton = ({
   item,
-  copied,
+  copied: _copied,
   setCopied,
   className,
 }: {

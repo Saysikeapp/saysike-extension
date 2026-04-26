@@ -9,21 +9,9 @@ export const Store = () => {
   const deals = storeDetails?.deals ?? [];
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredCodesCount, setFilteredCodesCount] = useState(0);
   const [filteredOffersCount, setFilteredOffersCount] = useState(0);
 
   useEffect(() => {
-    setFilteredCodesCount(
-      codes.filter((code) => {
-        if (
-          (code.title + code.description + code.terms)
-            .replace(/\s+/g, "")
-            .toLowerCase()
-            .includes(searchTerm.replace(/\s+/g, "").toLowerCase())
-        )
-          return true;
-      }).length,
-    );
     setFilteredOffersCount(
       deals.filter((deal) => {
         if (

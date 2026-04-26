@@ -30,14 +30,12 @@ export const MoreDetailsModal = ({
     dayjs(date).format("dddd D MMMM YYYY");
 
   const {
-    code,
     description,
     ends,
     exclusive,
     starts,
     terms,
     title,
-    tracking_url,
     created_at,
     updated_at,
   } = item;
