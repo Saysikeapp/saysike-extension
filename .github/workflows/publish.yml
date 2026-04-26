@@ -22,30 +22,17 @@ jobs:
       - name: Build & zip (Chrome MV3)
         run: bun run zip
 
-      - name: Submit to Chrome Web Store
-        run: bunx wxt submit --browser chrome
+      - name: Submit to stores
+        run: |
+          bun wxt submit \
+            --chrome-zip .output/*-chrome.zip \
+
         env:
           CHROME_EXTENSION_ID: ${{ secrets.CHROME_EXTENSION_ID }}
           CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
           CHROME_CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
           CHROME_REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
-
-  # Uncomment when published to Firefox
-  # publish-firefox:
-  #   name: Publish to Firefox Add-ons
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: oven-sh/setup-bun@v2
-  #       with:
-  #         bun-version: "1.3.8"
-  #     - name: Install deps
-  #       run: bun install --frozen-lockfile
-  #     - name: Build & zip (Firefox MV3)
-  #       run: bun run zip:firefox
-  #     - name: Submit to Firefox Add-ons
-  #       run: bunx wxt submit --browser firefox
-  #       env:
-  #         FIREFOX_EXTENSION_ID: ${{ secrets.FIREFOX_EXTENSION_ID }}
-  #         FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
-  #         FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
+          # FIREFOX_EXTENSION_ID: ${{ secrets.FIREFOX_EXTENSION_ID }}
+          # FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          # FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
+          
