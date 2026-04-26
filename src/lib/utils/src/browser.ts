@@ -9,16 +9,14 @@ export type KnownBrowsers =
   | "unknown";
 
 /** Browsers that have a published extension listing. All others are coming soon. */
-export const publishedBrowsers: ReadonlySet<KnownBrowsers> = new Set<KnownBrowsers>([
-  "Chrome",
-  "Brave",
-]);
+export const publishedBrowsers: ReadonlySet<KnownBrowsers> =
+  new Set<KnownBrowsers>(["Chrome", "Brave"]);
 
 export const detectBraveClient = async (): Promise<boolean> => {
   try {
-    const brave = (
-      navigator as Navigator & { brave?: { isBrave: () => Promise<boolean> } }
-    ).brave;
+    const { brave } = navigator as Navigator & {
+      brave?: { isBrave: () => Promise<boolean> };
+    };
     return brave?.isBrave ? await brave.isBrave() : false;
   } catch {
     return false;
