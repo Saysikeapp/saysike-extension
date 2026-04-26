@@ -2,7 +2,7 @@ import { Button, Icon, ThemeToggle, Typography } from "@saysike/ui";
 import { ReactNode } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
 
-const Login = ({ setView }: { setView: () => void }): ReactNode => {
+const Login = ({ setView: _setView }: { setView: () => void }): ReactNode => {
   const { theme, setTheme } = useTheme();
 
   return (

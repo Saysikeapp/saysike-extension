@@ -16,7 +16,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "storybook": "storybook dev -p 6006 -c src/lib/ui/.storybook",
-    "storybook:build": "storybook build -c src/lib/ui/.storybook"
+    "storybook:build": "storybook build -c src/lib/ui/.storybook",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "Joseph L Hawkins",
@@ -40,6 +41,8 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@eslint/compat": "^1.2.9",
     "@storybook/addon-docs": "^10.2.1",
     "@storybook/addon-links": "^10.2.1",

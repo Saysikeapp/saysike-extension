@@ -37,13 +37,13 @@ export const filterAndFormatDomain = (www: string): string => {
   domain = domain.replace(/^(WWW\.)/, "");
   domain = domain.replace(/\/+$/, "");
 
-  // a system to split sites by regional paths, DO NOT CHANGE this is formatted with the database
+  // a system to split sites by regional paths, DO NOT CHANGE, this is formatted with the backend.
 
   const pathFinder = domain.split("/");
 
   if (!pathFinder[0]) return "";
 
-  // don't bother requesting on common unrelated sites to save server resources.
+  // don't bother requesting on common unrelated sites.
   if (sitesToIgnore.includes(pathFinder[0]) || !domain) return "";
 
   if (pathFinder.length > 1 && typeof pathFinder[1] === "string") {

@@ -5,7 +5,7 @@ import { GETStoreDetailsResponse } from "@saysike/schemas";
 
 export const CodeDealButton = ({
   item,
-  copied,
+  copied: _copied,
   setCopied,
   className,
 }: {
@@ -28,7 +28,7 @@ export const CodeDealButton = ({
         // This is a bit annoying I guess, but works for now.
         // Better solution to be looked into TODO <><><>
         // !copied &&
-        //   chrome.tabs.create({
+        //   browser.tabs.create({
         //     url: tracking_url,
         //     active: false,
         //     // true,  - can make true to tab to it. lets see

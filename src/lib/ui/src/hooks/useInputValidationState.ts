@@ -2,7 +2,7 @@
 
 import { useFormState } from "react-hook-form";
 import { TValidationStateTextProps } from "../components/Shared/ValidationStateText";
-import { getDirtyField, getError, getTouchedField } from "../utils/rhf";
+import { getDirtyField, getError } from "../utils/rhf";
 
 export const useInputValidationState = (opts: {
   name: string;
@@ -11,7 +11,7 @@ export const useInputValidationState = (opts: {
 }) => {
   const { name, isDisabled, validationStateTextProps } = opts;
 
-  const { errors, touchedFields, dirtyFields } = useFormState({ name });
+  const { errors, dirtyFields } = useFormState({ name });
 
   const error = getError(errors, name);
   const hasError = !!error;
