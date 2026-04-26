@@ -6,12 +6,12 @@ export const setIconBadge = (
 ): void => {
   // Code or deals = number displayed
   if (result.codes?.length || result.deals?.length) {
-    void chrome.action.setBadgeBackgroundColor({
+    void browser.action.setBadgeBackgroundColor({
       color: "#6a0dad",
       tabId,
     });
 
-    void chrome.action.setBadgeText({
+    void browser.action.setBadgeText({
       text: (result.codes.length + result.deals.length).toString(),
       tabId,
     });
@@ -19,12 +19,12 @@ export const setIconBadge = (
 
   // If still store, highlight to consumer
   else if (result.store) {
-    void chrome.action.setBadgeBackgroundColor({
+    void browser.action.setBadgeBackgroundColor({
       color: "#6a0dad",
       tabId,
     });
 
-    void chrome.action.setBadgeText({
+    void browser.action.setBadgeText({
       text: "!",
       tabId,
     });

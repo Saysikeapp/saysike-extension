@@ -12,14 +12,14 @@ export const SocialLogin = ({
   facebookText: string;
 }): ReactNode => {
   const loginWithGoogle = (): void => {
-    void chrome.tabs.create({
+    void browser.tabs.create({
       url: import.meta.env.WXT_BASE_SERVER_URI,
       active: true,
     });
   };
 
   const loginWithFacebook = (): void => {
-    void chrome.tabs.create({
+    void browser.tabs.create({
       url: import.meta.env.WXT_BASE_SERVER_URI,
       active: true,
     });

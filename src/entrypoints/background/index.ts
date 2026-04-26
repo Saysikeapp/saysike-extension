@@ -1,14 +1,11 @@
-import {
-  BackgroundEventMethods,
-  ChromeMessageRequest,
-} from "@/lib/browerAPI";
+import { BackgroundEventMethods, ChromeMessageRequest } from "@/lib/browerAPI";
 import { getOrCacheStoreDetails } from "./cache/cache";
 
 export default defineBackground(() => {
   console.log("Saysike Background is running...");
 
   // Load store details when a tab is updated (e.g., URL change)
-  chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     // Only trigger when the URL has changed and is fully loaded
     if (changeInfo.status !== "complete" || !tab.url) return;
 
@@ -17,7 +14,7 @@ export default defineBackground(() => {
 
   // Chrome runtimes are weird and don't like async/await, and need to return true if Promise.
   // I hate this.
-  chrome.runtime.onMessage.addListener(
+  browser.runtime.onMessage.addListener(
     (req: ChromeMessageRequest, sender, sendResponse) => {
       switch (req.method) {
         case BackgroundEventMethods.GET_STORE_DETAILS:

@@ -2,7 +2,7 @@
   "extends": "./.wxt/tsconfig.json",
   "compilerOptions": {
     "target": "ES2020",
-    "types": ["chrome", "node"],
+    "types": ["node"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,

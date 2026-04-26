@@ -1,11 +1,11 @@
-import { ChromeMessageRequest } from "@/lib/browerAPI";
+import { BrowserMessageRequest } from "@/lib/browerAPI";
 import { makeAIStoreDetailsGETRequest } from "../requests/makeAIStoreDetailsGETRequest";
 import { GETStoreDetailsResponse } from "@saysike/schemas";
 import { filterAndFormatDomain } from "@saysike/utils";
 import { setIconBadge } from "../utils/setIconBadge";
 
 export const getStoreDetailsEvent = async (
-  data: ChromeMessageRequest["data"],
+  data: BrowserMessageRequest["data"],
 ): Promise<GETStoreDetailsResponse | null> => {
   // case to stop crashing on chrome-extensions and other chrome pages...
   const protocol = data.url.split(":")[0];

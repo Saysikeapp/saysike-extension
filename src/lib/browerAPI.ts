@@ -2,7 +2,7 @@ export enum BackgroundEventMethods {
   GET_STORE_DETAILS = "getStoreDetails",
 }
 
-export type ChromeMessageRequest = {
+export type BrowserMessageRequest = {
   method: BackgroundEventMethods.GET_STORE_DETAILS;
   data: {
     url: string;
@@ -12,7 +12,7 @@ export type ChromeMessageRequest = {
 
 export const getActiveTabId = (): Promise<number | undefined> => {
   return new Promise((resolve) => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       resolve(tabs[0]?.id);
     });
   });
@@ -25,7 +25,7 @@ export const getActiveTabId = (): Promise<number | undefined> => {
  */
 export const getCurrentUrl = async (): Promise<string | undefined> => {
   // Popup & Background Scripts
-  const [tab] = await chrome.tabs.query({
+  const [tab] = await browser.tabs.query({
     active: true,
     lastFocusedWindow: true,
   });
@@ -34,11 +34,11 @@ export const getCurrentUrl = async (): Promise<string | undefined> => {
 };
 
 export function sendRuntimeMessage<T>(
-  message: ChromeMessageRequest,
+  message: BrowserMessageRequest,
 ): Promise<T> {
   return new Promise<T>((resolve, reject) => {
-    chrome.runtime.sendMessage(message, (res: T) => {
-      const err = chrome.runtime.lastError;
+    browser.runtime.sendMessage(message, (res: T) => {
+      const err = browser.runtime.lastError;
       if (err) return reject(new Error(err.message));
       resolve(res);
     });
