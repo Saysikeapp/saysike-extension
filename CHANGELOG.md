@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.3...saysike-extension-v0.0.4) (2026-04-26)
+
+
+### Bug Fixes
+
+* initial release attempt [#3](https://github.com/Saysikeapp/saysike-extension/issues/3) ([9c65c1b](https://github.com/Saysikeapp/saysike-extension/commit/9c65c1bae706e531a37a9f321fc604a22ebf5b79))
+
 ## [0.0.3](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.2...saysike-extension-v0.0.3) (2026-04-26)
 
 
