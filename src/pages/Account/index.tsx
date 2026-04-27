@@ -2,6 +2,7 @@ import { authClient } from "@/lib/utils/authClient";
 import { Button, Icon, ThemeToggle } from "@saysike/ui";
 import { useTheme } from "../../contexts/ThemeContext";
 import { BLUE_ICON_FILTER } from "@/components/styles";
+import { assertEnv } from "@/lib/utils/env";
 
 const Account = () => {
   const { data } = authClient.useSession();
@@ -34,10 +35,7 @@ const Account = () => {
 
       <Button
         onClick={() => {
-          window.open(
-            `${import.meta.env.WXT_BASE_CLIENT_URI}/account`,
-            "_blank",
-          );
+          window.open(`${assertEnv("WXT_BASE_CLIENT_URI")}/account`, "_blank");
         }}
         className="w-full"
       >
