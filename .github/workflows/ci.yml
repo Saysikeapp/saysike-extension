@@ -28,6 +28,9 @@ jobs:
 
       - name: Build & zip (Chrome MV3)
         run: bun run zip
+        env:
+          WXT_BASE_CLIENT_URI: ${{ vars.WXT_BASE_CLIENT_URI }}
+          WXT_BASE_SERVER_URI: ${{ vars.WXT_BASE_SERVER_URI }}
 
       - name: Dry-run submit (Chrome Web Store)
         # Only runs on the release-please PR branch

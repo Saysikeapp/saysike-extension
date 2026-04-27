@@ -21,6 +21,9 @@ jobs:
 
       - name: Build & zip (Chrome MV3)
         run: bun run zip
+        env:
+          WXT_BASE_CLIENT_URI: ${{ vars.WXT_BASE_CLIENT_URI }}
+          WXT_BASE_SERVER_URI: ${{ vars.WXT_BASE_SERVER_URI }}
 
       - name: Submit to stores
         run: |
@@ -35,4 +38,3 @@ jobs:
           # FIREFOX_EXTENSION_ID: ${{ secrets.FIREFOX_EXTENSION_ID }}
           # FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
           # FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
-          
