@@ -4,7 +4,7 @@
 
 It offers you coupon codes while browsing, with plans to implement price comparisons, history & tracking in the near future.
 
-Currently available on Chrome, Brave, and Edge though the Chrome Web Store: https://chromewebstore.google.com/detail/saysike/pgokhihamcfcdlfamkdcjbfmipgaddlf and waiting on approval by Firefox.
+Currently available on Chrome, Brave, and Edge through the Chrome Web Store: https://chromewebstore.google.com/detail/saysike/pgokhihamcfcdlfamkdcjbfmipgaddlf and waiting on approval by Firefox.
 
 ## Project Structure
 
@@ -40,7 +40,7 @@ Firefox:
 bun dev:firefox
 ```
 
-Then load the `.output/chrome-mv3-dev`or `.output.firefox-mv3-dev` directory as an unpacked extension in your browser.
+Then load the `.output/chrome-mv3-dev` or `.output.firefox-mv3-dev` directory as an unpacked extension in your browser.
 
 ### Build
 
@@ -97,7 +97,7 @@ bun storybook
 
 ## Contributing
 
-TBD - feel free to raise issues or submit PRs until I set up a clear guidline.
+TBD - feel free to raise issues or submit PRs until I set up a clear guideline.
 
 ## License
 
