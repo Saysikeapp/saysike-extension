@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.4...saysike-extension-v0.0.5) (2026-04-27)
+
+
+### Bug Fixes
+
+* test chrome store pipeline ([d8f6677](https://github.com/Saysikeapp/saysike-extension/commit/d8f667772e63a06ce38b45de3200ebec1211f01a))
+
 ## [0.0.4](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.3...saysike-extension-v0.0.4) (2026-04-26)
 
 
