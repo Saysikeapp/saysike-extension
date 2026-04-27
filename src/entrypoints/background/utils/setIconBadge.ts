@@ -1,4 +1,4 @@
-import { GETStoreDetailsResponse } from "@saysike/schemas";
+import { GETStoreDetailsResponse } from "@/lib/schemas";
 
 export const setIconBadge = (
   result: GETStoreDetailsResponse,

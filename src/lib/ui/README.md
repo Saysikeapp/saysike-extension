@@ -1,1 +1,1 @@
-Saysike Extension UI Library, written in React
+Saysike Extension UI Library.

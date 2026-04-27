@@ -1,4 +1,4 @@
-import { assertNonNullable } from "@saysike/utils";
+import { assertNonNullable } from "@/lib/utils";
 import { useContext, Context } from "react";
 
 export const useNonNullableContext = <T,>(ctx: Context<T | null>) => {

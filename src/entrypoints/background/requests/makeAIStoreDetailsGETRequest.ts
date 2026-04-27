@@ -1,7 +1,7 @@
 import { httpRequest } from "@saysike/http";
-import { GETStoreDetailsResponse } from "@saysike/schemas";
+import { GETStoreDetailsResponse } from "@/lib/schemas";
 
-const BASE_URL = import.meta.env.WXT_BASE_SERVER_URI as string;
+const BASE_URL = import.meta.env.WXT_BASE_SERVER_URI;
 
 export async function makeAIStoreDetailsGETRequest(
   storeUrl: string,

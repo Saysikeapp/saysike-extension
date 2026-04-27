@@ -1,4 +1,4 @@
-import { authClient } from "@/lib/authClient";
+import { authClient } from "@/lib/utils/authClient";
 import { Button, Icon, ThemeToggle } from "@saysike/ui";
 import { useTheme } from "../../contexts/ThemeContext";
 import { BLUE_ICON_FILTER } from "@/components/styles";

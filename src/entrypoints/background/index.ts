@@ -1,4 +1,7 @@
-import { BackgroundEventMethods, BrowserMessageRequest } from "@/lib/browerAPI";
+import {
+  BackgroundEventMethods,
+  BrowserMessageRequest,
+} from "@/lib/utils/browerAPI";
 import { getOrCacheStoreDetails } from "./cache/cache";
 
 export default defineBackground(() => {

@@ -1,5 +1,5 @@
-import { GETStoreDetailsResponse } from "@saysike/schemas";
-import { filterAndFormatDomain } from "@saysike/utils";
+import { GETStoreDetailsResponse } from "@/lib/schemas";
+import { filterAndFormatDomain } from "@/lib/utils";
 import { getStoreDetailsEvent } from "../events/getStoreDetailsEvent";
 import { setIconBadge } from "../utils/setIconBadge";
 

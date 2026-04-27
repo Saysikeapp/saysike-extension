@@ -1,11 +1,11 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { GETStoreDetailsResponse } from "@saysike/schemas";
+import { GETStoreDetailsResponse } from "@/lib/schemas";
 import {
   BackgroundEventMethods,
   getActiveTabId,
   getCurrentUrl,
   sendRuntimeMessage,
-} from "@/lib/browerAPI";
+} from "@/lib/utils/browerAPI";
 
 export const STORE_DETAILS_QUERY_KEY = "store-details";
 

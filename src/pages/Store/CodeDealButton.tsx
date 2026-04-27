@@ -1,7 +1,7 @@
 import { Button, Icon } from "@saysike/ui";
 
 import { cn } from "@saysike/ui";
-import { GETStoreDetailsResponse } from "@saysike/schemas";
+import { GETStoreDetailsResponse } from "@/lib/schemas";
 
 export const CodeDealButton = ({
   item,
