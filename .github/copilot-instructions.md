@@ -74,7 +74,7 @@ Defined in `.env.local` (dev) and `.env.production`. These are typed and accesse
 
 - Use Tailwind utility classes throughout.
 - **Always use `cn()` from `@saysike/ui` for conditional or merged classnames** — never string template literals.
-- CSS design tokens live in `src/lib/tailwind-config/src/variables.css`.
+- CSS design tokens live in `src/lib/tailwind-config/variables.css`.
 - Key tokens: `--saysike-blue-primary`, `--surface-primary`, `--surface-secondary`, `--surface-tertiary`, `--text-primary`, `--text-secondary`, `--text-tertiary`, `--border-color`, `--success-color`, `--danger-color`.
 
 ## Code Style & Conventions
