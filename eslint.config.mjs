@@ -40,11 +40,7 @@ export default tseslint.config(
       parserOptions: {
         projectService: {
           // Allow config files (.mjs, postcss.config.js etc.) that aren't in tsconfig
-          allowDefaultProject: [
-            "*.mjs",
-            "*.config.js",
-            "src/lib/ui/postcss.config.cjs",
-          ],
+          allowDefaultProject: ["*.mjs", "*.config.js"],
         },
         tsconfigRootDir: import.meta.dirname,
       },
