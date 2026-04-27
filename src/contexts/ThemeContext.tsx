@@ -80,7 +80,7 @@ export const ThemeProvider = (props: PropsWithChildren): ReactNode => {
     };
 
     mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
+    return (): void => mql.removeEventListener("change", handler);
   }, [theme]);
 
   return (

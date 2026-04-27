@@ -21,14 +21,11 @@ export default defineConfig({
     resolve: {
       alias: {
         "@saysike/ui": path.resolve(import.meta.dirname, "src/lib/ui/src"),
-        "@saysike/utils": path.resolve(
-          import.meta.dirname,
-          "src/lib/utils/src",
-        ),
-        "@saysike/http": path.resolve(import.meta.dirname, "src/lib/http/src"),
+        "@saysike/utils": path.resolve(import.meta.dirname, "src/lib/utils"),
+        "@saysike/http": path.resolve(import.meta.dirname, "src/lib/http"),
         "@saysike/schemas": path.resolve(
           import.meta.dirname,
-          "src/lib/schemas/src",
+          "src/lib/schemas",
         ),
       },
     },

@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 
 import Account from "@/pages/Account";
 import Login from "@/pages/Login";
-import { authClient } from "@/lib/authClient";
+import { authClient } from "@/lib/utils/authClient";
 
 export const UserArea = ({ show }: { show: boolean }): ReactNode => {
   const { data } = authClient.useSession();

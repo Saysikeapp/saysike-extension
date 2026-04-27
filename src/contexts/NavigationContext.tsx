@@ -1,5 +1,5 @@
 import { useNonNullableContext } from "@saysike/ui";
-import { TContainer } from "@/types/navigation";
+import { TContainer } from "@/types/navigation.types";
 import { PropsWithChildren, ReactNode, createContext, useState } from "react";
 
 type TNavigationContext = {

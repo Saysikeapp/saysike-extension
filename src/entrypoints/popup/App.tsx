@@ -11,7 +11,7 @@ const App: () => JSX.Element = () => {
       <ErrorBoundary
         fallback={<Fallback />}
         onError={() => {
-          // TODO: Put affiliate error
+          // TODO: Put affiliate error handling here
         }}
       >
         <Header />

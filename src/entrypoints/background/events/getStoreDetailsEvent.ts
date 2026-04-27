@@ -1,13 +1,13 @@
-import { BrowserMessageRequest } from "@/lib/browerAPI";
+import { BrowserMessageRequest } from "@/lib/utils/browserAPI";
 import { makeAIStoreDetailsGETRequest } from "../requests/makeAIStoreDetailsGETRequest";
-import { GETStoreDetailsResponse } from "@saysike/schemas";
-import { filterAndFormatDomain } from "@saysike/utils";
+import { GETStoreDetailsResponse } from "@/lib/schemas";
+import { filterAndFormatDomain } from "@/lib/utils";
 import { setIconBadge } from "../utils/setIconBadge";
 
 export const getStoreDetailsEvent = async (
   data: BrowserMessageRequest["data"],
 ): Promise<GETStoreDetailsResponse | null> => {
-  // case to stop crashing on chrome-extensions and other chrome pages...
+  // case to stop crashing on chrome-extensions:// and other chrome pages...
   const protocol = data.url.split(":")[0];
   if (protocol !== "https" && protocol !== "http") return null;
 

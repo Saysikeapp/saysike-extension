@@ -11,7 +11,7 @@ import {
 
 import { CodeDealButton } from "./CodeDealButton";
 import dayjs from "dayjs";
-import { GETStoreDetailsResponse } from "@saysike/schemas";
+import { GETStoreDetailsResponse } from "@/lib/schemas";
 
 export const MoreDetailsModal = ({
   showModal,

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { useNavigation } from "../../contexts/NavigationContext";
 import { cn, Icon } from "@saysike/ui";
 import type { TIconSrc } from "@saysike/ui";
-import type { TContainer } from "@/types/navigation";
+import type { TContainer } from "@/types/navigation.types";
 
 const NAV_ITEMS: { id: TContainer; icon: TIconSrc }[] = [
   { id: "home", icon: "label-tag.svg" },

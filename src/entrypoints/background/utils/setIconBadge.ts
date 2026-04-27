@@ -1,4 +1,4 @@
-import { GETStoreDetailsResponse } from "@saysike/schemas";
+import { GETStoreDetailsResponse } from "@/lib/schemas";
 
 export const setIconBadge = (
   result: GETStoreDetailsResponse,
@@ -17,7 +17,7 @@ export const setIconBadge = (
     });
   }
 
-  // If still store, highlight to consumer
+  // If still store, highlight to user
   else if (result.store) {
     void browser.action.setBadgeBackgroundColor({
       color: "#6a0dad",

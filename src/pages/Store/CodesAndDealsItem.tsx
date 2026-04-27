@@ -4,9 +4,9 @@ import { Button, Icon, Typography } from "@saysike/ui";
 import { MoreDetailsModal } from "./MoreDetailsModal";
 import { CodeDealButton } from "./CodeDealButton";
 import dayjs from "dayjs";
-import { highlightText } from "@/lib/highlightText";
-import { percentInStringRegex } from "@saysike/utils";
-import { GETStoreDetailsResponse } from "@saysike/schemas";
+import { highlightText } from "@/components/common/HighlightText";
+import { percentInStringRegex } from "@/lib/utils";
+import { GETStoreDetailsResponse } from "@/lib/schemas";
 
 const checkIsToday = (dateToCheck: Date): boolean => {
   const today = new Date();
