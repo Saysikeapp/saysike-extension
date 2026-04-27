@@ -43,7 +43,7 @@ export default tseslint.config(
           allowDefaultProject: [
             "*.mjs",
             "*.config.js",
-            "src/lib/ui/postcss.config.js",
+            "src/lib/ui/postcss.config.cjs",
           ],
         },
         tsconfigRootDir: import.meta.dirname,
