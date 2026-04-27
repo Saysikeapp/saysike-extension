@@ -1,5 +1,12 @@
+echo "Checking types..."
+
 bun run check-types
+
+echo "Checking lint passes..."
 
 bun run lint
 
+echo "Running build..."
+
 bun run build
+bun run build:firefox
