@@ -1,4 +1,4 @@
-import { BrowserMessageRequest } from "@/lib/utils/browerAPI";
+import { BrowserMessageRequest } from "@/lib/utils/browserAPI";
 import { makeAIStoreDetailsGETRequest } from "../requests/makeAIStoreDetailsGETRequest";
 import { GETStoreDetailsResponse } from "@/lib/schemas";
 import { filterAndFormatDomain } from "@/lib/utils";

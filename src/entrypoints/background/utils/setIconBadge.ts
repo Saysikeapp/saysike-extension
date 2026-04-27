@@ -17,7 +17,7 @@ export const setIconBadge = (
     });
   }
 
-  // If still store, highlight to consumer
+  // If still store, highlight to user
   else if (result.store) {
     void browser.action.setBadgeBackgroundColor({
       color: "#6a0dad",

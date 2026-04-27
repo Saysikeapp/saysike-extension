@@ -1,7 +1,7 @@
 import {
   BackgroundEventMethods,
   BrowserMessageRequest,
-} from "@/lib/utils/browerAPI";
+} from "@/lib/utils/browserAPI";
 import { getOrCacheStoreDetails } from "./cache/cache";
 
 export default defineBackground(() => {
