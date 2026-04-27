@@ -1,4 +1,4 @@
-import { assertNonNullable } from "@/lib/utils";
+import { assertNonNullable } from "./assert";
 import { EnvironmentVariables } from "@/types/env.types";
 
 // Prefer using one of these utils when accessing environment variables instead of directly using
