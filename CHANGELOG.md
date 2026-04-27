@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.6](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.5...saysike-extension-v0.0.6) (2026-04-27)
+
+
+### Bug Fixes
+
+* fix issue with tsconfig.json ([17f4dad](https://github.com/Saysikeapp/saysike-extension/commit/17f4dad59dc37e98c9150427915bf01532aef049))
+* fix some import issues ([32cf1d2](https://github.com/Saysikeapp/saysike-extension/commit/32cf1d21f1575d66a42232a95965c142cb6c10d2))
+
 ## [0.0.5](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.4...saysike-extension-v0.0.5) (2026-04-27)
 
 
