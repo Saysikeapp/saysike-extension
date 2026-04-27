@@ -56,7 +56,7 @@ Firefox:
 bun build:firefox
 ```
 
-Then load the `.output/chrome-mv3`or `.output.firefox-mv3` directory as an unpacked extension in your browser.
+Then load the `.output/chrome-mv3` or `.output.firefox-mv3` directory as an unpacked extension in your browser.
 
 ### Type check
 
