@@ -10,7 +10,7 @@ echo "\nRunning tests...\n"
 
 bun run test
 
-echo "\nRunning build...\n"
+echo "\nRunning builds...\n"
 
 bun run build
 bun run build:firefox
