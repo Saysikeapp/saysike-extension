@@ -1,16 +1,16 @@
-echo "\nChecking types...\n"
+printf "\nChecking types...\n\n"
 
 bun run check-types
 
-echo "\nChecking lint passes...\n"
+printf "\nChecking lint passes...\n\n"
 
 bun run lint
 
-echo "\nRunning tests...\n"
+printf "\nRunning tests...\n\n"
 
 bun run test
 
-echo "\nRunning builds...\n"
+printf "\nRunning builds...\n\n"
 
 bun run build
 bun run build:firefox

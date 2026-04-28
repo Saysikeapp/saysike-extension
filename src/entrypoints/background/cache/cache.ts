@@ -51,3 +51,10 @@ export const getOrCacheStoreDetails = async ({
 
   return data;
 };
+
+/** For use in tests only — resets the in-memory store cache. */
+export function clearCacheForTesting(): void {
+  for (const key of Object.keys(storeCache)) {
+    delete storeCache[key];
+  }
+}

@@ -1,5 +1,5 @@
 import { vi } from "vitest";
-import { getOrCacheStoreDetails } from "./cache";
+import { getOrCacheStoreDetails, clearCacheForTesting } from "./cache";
 import { createMockStoreDetailsResponse } from "@/test/factories/storeDetails";
 
 vi.mock("../events/getStoreDetailsEvent", () => ({
@@ -22,6 +22,9 @@ const mockBadge = vi.mocked(setIconBadge);
 const ARGS = { url: "https://example.com", tabId: 1 };
 
 describe("getOrCacheStoreDetails", () => {
+  beforeEach(() => {
+    clearCacheForTesting();
+  });
   it("returns null for an empty domain", async () => {
     const { filterAndFormatDomain } = await import("@/lib/utils");
     vi.mocked(filterAndFormatDomain).mockReturnValueOnce("");
@@ -61,15 +64,23 @@ describe("getOrCacheStoreDetails", () => {
     const mockResponse = createMockStoreDetailsResponse();
     mockEvent.mockResolvedValue(mockResponse);
 
-    // First call
-    await getOrCacheStoreDetails(ARGS);
-    vi.clearAllMocks();
+    vi.useFakeTimers();
+    try {
+      const initialTime = new Date("2024-01-01T00:00:00.000Z");
+      vi.setSystemTime(initialTime);
 
-    // Advance time beyond the 30-minute TTL
-    vi.setSystemTime(Date.now() + 31 * 60 * 1000);
+      // First call
+      await getOrCacheStoreDetails(ARGS);
+      vi.clearAllMocks();
 
-    await getOrCacheStoreDetails(ARGS);
+      // Advance time beyond the 30-minute TTL
+      vi.setSystemTime(new Date(initialTime.getTime() + 31 * 60 * 1000));
 
-    expect(mockEvent).toHaveBeenCalledTimes(1);
+      await getOrCacheStoreDetails(ARGS);
+
+      expect(mockEvent).toHaveBeenCalledTimes(1);
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

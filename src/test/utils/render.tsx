@@ -22,10 +22,9 @@ function makeWrapper(
   opts: WrapperOptions = {},
 ): ({ children }: { children: ReactNode }) => ReactNode {
   const { withNavigation = true, withTheme = true } = opts;
+  const queryClient = makeQueryClient();
 
   return function Wrapper({ children }: { children: ReactNode }): ReactNode {
-    const queryClient = makeQueryClient();
-
     let content = (
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     );
