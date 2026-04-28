@@ -3,8 +3,9 @@ import { Button, Icon, ThemeToggle } from "@saysike/ui";
 import { useTheme } from "../../contexts/ThemeContext";
 import { BLUE_ICON_FILTER } from "@/components/styles";
 import { assertEnv } from "@/lib/utils/env";
+import { ReactNode } from "react";
 
-const Account = () => {
+const Account = (): ReactNode => {
   const { data } = authClient.useSession();
   const { theme, setTheme } = useTheme();
 
