@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.0.7](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.6...saysike-extension-v0.0.7) (2026-04-28)
+
+
+### Bug Fixes
+
+* add uris to env vars in pipeline ([92e7e1e](https://github.com/Saysikeapp/saysike-extension/commit/92e7e1ee61efe3678f5a293e7a107a5f4fdbfe8f))
+* storybook ts errors ([7fcd23d](https://github.com/Saysikeapp/saysike-extension/commit/7fcd23d9c3e45d838275675af258229686ef6109))
+* update ui library imports ([8060138](https://github.com/Saysikeapp/saysike-extension/commit/8060138b30cb125eb1ff823f6c594281e88a539e))
+* various changes to components to meet new criteria ([239b05c](https://github.com/Saysikeapp/saysike-extension/commit/239b05c01a4cb21739fb42c52c15a095dd698110))
+
 ## [0.0.6](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.5...saysike-extension-v0.0.6) (2026-04-27)
 
 
