@@ -7,7 +7,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  actions: write
 
 jobs:
   release-please:
@@ -17,7 +16,7 @@ jobs:
       - uses: googleapis/release-please-action@v4
         id: release
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
@@ -38,6 +37,9 @@ jobs:
       - name: Build & zip (Chrome MV3)
         if: ${{ steps.release.outputs.pr }}
         run: bun run zip
+        env:
+          WXT_BASE_CLIENT_URI: ${{ vars.WXT_BASE_CLIENT_URI }}
+          WXT_BASE_SERVER_URI: ${{ vars.WXT_BASE_SERVER_URI }}
 
       - name: Dry-run submit (Chrome Web Store)
         if: ${{ steps.release.outputs.pr }}
@@ -50,12 +52,3 @@ jobs:
           CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
           CHROME_CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
           CHROME_REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
-
-      # When a release is created: trigger the publish workflow.
-      # publish.yml uses 'release: published' but GITHUB_TOKEN events don't fire
-      # cross-workflow, so we dispatch it explicitly here instead.
-      - name: Trigger publish
-        if: ${{ steps.release.outputs.release_created }}
-        run: gh workflow run publish.yml --ref ${{ steps.release.outputs.tag_name }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
