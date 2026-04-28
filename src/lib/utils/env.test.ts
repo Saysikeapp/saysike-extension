@@ -18,7 +18,7 @@ describe("assertEnv", () => {
 
   it("throws with an informative message when the variable is missing", () => {
     expect(() => assertEnv("WXT_UNKNOWN_VAR" as never)).toThrow(
-      "[assertEnv] WXT_UNKNOWN_VAR environment variable was not found.",
+      "[assertEnv] WXT_UNKNOWN_VAR environment variable was not found or is empty.",
     );
   });
 });
