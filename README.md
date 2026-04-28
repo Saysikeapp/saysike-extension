@@ -74,8 +74,12 @@ bun lint:fix
 ### Tests
 
 ```bash
-bun test
+bun run test          # run once
+bun run test:watch    # watch mode
+bun run test:coverage # coverage report
 ```
+
+> **Note:** use `bun run test`, not `bun test`. The latter invokes Bun's native test runner, which is incompatible with the Vitest-based test setup (see [Architecture decisions](#architecture-decisions) below).
 
 ### Storybook (UI components)
 
@@ -94,6 +98,21 @@ bun storybook
 | Data fetching             | TanStack Query v5 |
 | Auth (client)             | better-auth       |
 | Schemas                   | Zod v4            |
+| Testing                   | Vitest + MSW      |
+
+## Architecture decisions
+
+### Vitest over Bun's native test runner
+
+Although Bun is the project's runtime and package manager, the test suite uses **Vitest** (`bun run test`) rather than Bun's built-in runner (`bun test`). Three technical constraints drive this:
+
+1. **`import.meta.env.WXT_*` variables** — WXT bakes these into the bundle at Vite build time. Vitest runs inside the same Vite pipeline, so it can stub them with `vi.stubEnv()`. Bun's runner has no knowledge of Vite's transform layer and sees every `import.meta.env.*` as `undefined`.
+
+2. **MSW network interception** — `msw/node` patches Node's undici-based `fetch`. Bun ships its own native fetch implementation that MSW's interceptors do not hook into, causing requests to either fail or leak to the network.
+
+3. **Module mocking** — Vitest hoists `vi.mock()` calls to the top of the module graph at transform time, which is how mocking background scripts and utility modules works here. Bun's `mock.module()` has different semantics and would require a full rewrite of every mock.
+
+Vitest also runs in ~1 s for the full suite because it reuses the Vite transform cache, so there is no meaningful speed trade-off.
 
 ## Contributing
 
