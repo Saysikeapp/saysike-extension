@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.9](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.8...saysike-extension-v0.0.9) (2026-04-28)
+
+
+### Bug Fixes
+
+* prevent building without correct env vars ([37d2548](https://github.com/Saysikeapp/saysike-extension/commit/37d254843246c9f4b302b0a8ec3343fbcf3ceaa4))
+
 ## [0.0.8](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.7...saysike-extension-v0.0.8) (2026-04-28)
 
 
