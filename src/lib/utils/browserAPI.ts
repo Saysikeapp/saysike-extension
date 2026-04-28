@@ -30,7 +30,7 @@ export const getCurrentUrl = async (): Promise<string | undefined> => {
     lastFocusedWindow: true,
   });
 
-  return tab.url;
+  return tab?.url;
 };
 
 export function sendRuntimeMessage<T>(

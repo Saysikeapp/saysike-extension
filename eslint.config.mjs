@@ -85,6 +85,10 @@ export default tseslint.config(
     },
     rules: {
       ...pluginTestingLibrary.configs.react.rules,
+      // CSS class assertions and document.head/body mutation checks require
+      // direct node access — no accessible query alternative exists.
+      "testing-library/no-container": "off",
+      "testing-library/no-node-access": "off",
     },
   },
 
