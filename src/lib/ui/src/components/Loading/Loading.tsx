@@ -18,12 +18,4 @@ const LoadingSpinner = ({
   );
 };
 
-const LoadingDoubleSpinner = ({
-  className,
-}: {
-  className?: string;
-}): React.ReactElement => {
-  return <span className={cn("custom-loader", className)}></span>;
-};
-
-export { LoadingDoubleSpinner, LoadingSpinner };
+export { LoadingSpinner };

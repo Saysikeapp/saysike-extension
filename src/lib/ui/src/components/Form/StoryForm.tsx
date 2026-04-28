@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 import { useForm } from "./hooks";
 import { Form } from "./Form";
 import { ZodSchema } from "zod";
@@ -8,7 +8,7 @@ import { Button } from "../Button/Button";
 export const StoryForm = ({
   children,
   schema,
-}: PropsWithChildren<unknown> & { schema: ZodSchema }) => {
+}: PropsWithChildren<unknown> & { schema: ZodSchema }): ReactNode => {
   const form = useForm({
     schema,
     mode: "all",

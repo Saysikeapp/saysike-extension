@@ -36,7 +36,7 @@ export const Header = (): ReactNode => {
           <img
             src="/cut-logo.png"
             alt="Saysike"
-            className="relative block w-[240px] h-[40px] object-contain m-auto select-none"
+            className="relative block w-60 h-10 object-contain m-auto select-none"
             draggable={false}
             id="logo"
           />

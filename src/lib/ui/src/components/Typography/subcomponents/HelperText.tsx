@@ -1,7 +1,12 @@
 import { HelperTextProps } from "./HelperText.types";
 import { cn } from "../../../utils/classnames";
+import { ReactNode } from "react";
 
-const HelperText = ({ children, state, className }: HelperTextProps) => (
+const HelperText = ({
+  children,
+  state,
+  className,
+}: HelperTextProps): ReactNode => (
   <div
     role="alert"
     className={cn(

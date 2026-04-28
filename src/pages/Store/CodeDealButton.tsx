@@ -2,6 +2,7 @@ import { Button, Icon } from "@saysike/ui";
 
 import { cn } from "@saysike/ui";
 import { GETStoreDetailsResponse } from "@/lib/schemas";
+import { ReactNode } from "react";
 
 export const CodeDealButton = ({
   item,
@@ -13,7 +14,7 @@ export const CodeDealButton = ({
   copied: boolean;
   setCopied: React.Dispatch<React.SetStateAction<boolean>>;
   className?: string;
-}) => {
+}): ReactNode => {
   const { code, tracking_url } = item;
 
   return (

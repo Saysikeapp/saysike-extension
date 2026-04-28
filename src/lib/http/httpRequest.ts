@@ -10,6 +10,17 @@ export interface HttpRequestParams<TRequest, TResponse, TSearchParams> {
   responseSchema?: z.ZodType<TResponse>;
 }
 
+/**
+ * Basic fetch wrapper for making HTTP requests with built-in support for:
+ * - JSON request bodies
+ * - Search params
+ * - Identity tokens in the Authorization header
+ * - Response validation with Zod schemas
+ *
+ * @param params - The parameters for the HTTP request
+ * @returns The parsed response from the server, validated against the provided Zod schema if given
+ * @throws Will throw an error if the response status is not ok, or if response validation fails
+ */
 export async function httpRequest<
   TResponse,
   TRequest = undefined,

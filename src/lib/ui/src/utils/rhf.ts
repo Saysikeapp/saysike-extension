@@ -22,7 +22,9 @@ const getByPath = (obj: unknown, path: string): unknown => {
   for (const key of parts) {
     if (cur == null) return undefined;
     if (typeof cur !== "object") return undefined;
-    cur = (cur as Record<string, unknown>)[key];
+    if (!Object.prototype.hasOwnProperty.call(cur, key)) return undefined;
+    const descriptor = Object.getOwnPropertyDescriptor(cur, key);
+    cur = descriptor && descriptor.enumerable ? descriptor.value : undefined;
   }
 
   return cur;

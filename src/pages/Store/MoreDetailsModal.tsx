@@ -75,7 +75,8 @@ export const MoreDetailsModal = ({
                   <h4>Ends</h4>
 
                   <Typography.HelperText
-                    state={`${endsSoonWarningState || "normal"}`} // <><><> could do some yellow text warning too based on time
+                    // @todo could do some yellow text warning too based on time
+                    state={`${endsSoonWarningState || "normal"}`}
                   >
                     <Icon src="time.svg" className="mr-2" />
                     {ends ? formatDate(ends) : "Unknown"}
