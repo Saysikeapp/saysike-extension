@@ -24,6 +24,6 @@ export const env = (name: keyof EnvironmentVariables): string | undefined => {
 export const assertEnv = (name: keyof EnvironmentVariables): string => {
   return assertNonNullable(
     env(name),
-    `[assertEnv] ${String(name)} environment variable was not found.`,
+    `[assertEnv] ${String(name)} environment variable was not found or is empty.`,
   );
 };

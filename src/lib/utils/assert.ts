@@ -8,7 +8,8 @@ export const assertNonNullable = <T>(
   value: T | null | undefined,
   throwMessage: string = "Assertion failed",
 ): NonNullable<T> => {
-  if (value === undefined || value === null) throw new Error(throwMessage);
+  if (value === undefined || value === null || value === "")
+    throw new Error(throwMessage);
 
   return value;
 };
