@@ -6,14 +6,32 @@ import { httpRequest } from "./httpRequest";
 const MOCK_URL = "https://api.example.com/data";
 
 /** Helper: register a one-off handler that returns `{ ok: true }` for any method. */
-function useOkHandler(method: "get" | "post" | "put" | "delete" | "patch") {
+function useOkHandler(method: "get" | "post" | "put" | "delete" | "patch"): {
+  getCapture: () => Request;
+} {
   let captured: Request;
-  server.use(
-    http[method](MOCK_URL, ({ request }) => {
-      captured = request;
-      return HttpResponse.json({ ok: true });
-    }),
-  );
+  const handler = ({ request }: { request: Request }): Response => {
+    captured = request;
+    return HttpResponse.json({ ok: true });
+  };
+  switch (method) {
+    case "get":
+      server.use(http.get(MOCK_URL, handler));
+      break;
+    case "post":
+      server.use(http.post(MOCK_URL, handler));
+      break;
+    case "put":
+      server.use(http.put(MOCK_URL, handler));
+      break;
+    case "delete":
+      server.use(http.delete(MOCK_URL, handler));
+      break;
+    case "patch":
+      server.use(http.patch(MOCK_URL, handler));
+      break;
+  }
+  // captured is always set by the time handler resolves
   return { getCapture: () => captured };
 }
 
