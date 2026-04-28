@@ -6,6 +6,10 @@ echo "Checking lint passes..."
 
 bun run lint
 
+echo "Running tests..."
+
+bun run test
+
 echo "Running build..."
 
 bun run build
