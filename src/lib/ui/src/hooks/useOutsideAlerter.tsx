@@ -5,9 +5,9 @@ import { RefObject, useEffect } from "react";
 export function useOutsideAlerter<T extends HTMLElement>(
   ref: RefObject<T | null>,
   onOutside: () => void,
-) {
+): void {
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent): void => {
       const el = ref.current;
       if (!el) return;
 
@@ -19,7 +19,7 @@ export function useOutsideAlerter<T extends HTMLElement>(
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("touchstart", handleClickOutside);
 
-    return () => {
+    return (): void => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("touchstart", handleClickOutside);
     };

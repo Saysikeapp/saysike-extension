@@ -17,7 +17,7 @@ export const Form = <T extends FieldValues>({
         <form
           className={className}
           onSubmit={(e) => {
-            // TODO <><> see: https://github.com/orgs/react-hook-form/discussions/3704
+            // @todo: see: https://github.com/orgs/react-hook-form/discussions/3704
             e.stopPropagation();
             void form.handleSubmit(onSubmit)(e);
           }}

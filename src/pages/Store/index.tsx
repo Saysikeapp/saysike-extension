@@ -1,9 +1,9 @@
 import { Typography, Input, Icon } from "@saysike/ui";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useStoreDetails } from "@/hooks/useStoreDetails";
 import CodesAndDealsList from "./CodesAndDealsList";
 
-export const Store = () => {
+export const Store = (): ReactNode => {
   const storeDetails = useStoreDetails().data;
   const codes = storeDetails?.codes ?? [];
   const deals = storeDetails?.deals ?? [];

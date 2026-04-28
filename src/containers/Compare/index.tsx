@@ -1,7 +1,7 @@
 import { Icon, Typography } from "@saysike/ui"; // Typography used for HelperText
 import type { TIconSrc } from "@saysike/ui";
 import { ReactNode } from "react";
-import { BLUE_ICON_FILTER } from "@/components/styles";
+import { BLUE_ICON_FILTER } from "@/components/common/styles";
 
 const COMING_SOON_FEATURES: { icon: TIconSrc; text: string }[] = [
   { icon: "pie-chart.svg", text: "Compare prices across multiple stores" },

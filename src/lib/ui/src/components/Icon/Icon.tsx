@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import type { JSX } from "react";
 import { ReactSVG, Props } from "react-svg";
-// import Head from "next/head";
 
 import { cn } from "../../utils/classnames";
 import { TypeIconCDNProps, iconSizeArray } from "./Icon.types";
@@ -17,8 +16,7 @@ const FALLBACK = (folder: string) =>
     return (
       <ReactSVG
         {...SVG_PROPS}
-        // TODO <><><> un-hardcode cdn url?
-        // src={`${assertEnv("NEXT_PUBLIC_CDN_URL")}/${folder ? folder + "/" : ""}default.svg`}
+        // @todo: un-hardcode cdn url?
         src={`https://cdn.saysike.com/${folder ? folder + "/" : ""}default.svg`}
         className="icon-stroke-none"
       />
@@ -86,7 +84,7 @@ const Icon = React.memo(function IconCDN(props: TypeIconCDNProps) {
 
     const href = CDN_URL;
 
-    const ensureLink = (rel: "preconnect" | "dns-prefetch") => {
+    const ensureLink = (rel: "preconnect" | "dns-prefetch"): void => {
       const existing = document.head.querySelector<HTMLLinkElement>(
         `link[rel="${rel}"][href="${href}"]`,
       );
@@ -130,7 +128,6 @@ const Icon = React.memo(function IconCDN(props: TypeIconCDNProps) {
             setLoaded(true);
             return FALLBACK(folder)();
           }}
-          // loading={FALLBACK(folder)} // should use only local files
           src={url}
           {...wrapperProps}
           width={width}

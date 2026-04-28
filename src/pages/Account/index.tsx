@@ -1,7 +1,7 @@
 import { authClient } from "@/lib/utils/authClient";
 import { Button, Icon, ThemeToggle } from "@saysike/ui";
 import { useTheme } from "../../contexts/ThemeContext";
-import { BLUE_ICON_FILTER } from "@/components/styles";
+import { BLUE_ICON_FILTER } from "@/components/common/styles";
 import { assertEnv } from "@/lib/utils/env";
 import { ReactNode } from "react";
 
