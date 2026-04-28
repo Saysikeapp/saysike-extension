@@ -8,7 +8,7 @@ export const useInputValidationState = (opts: {
   name: string;
   isDisabled: boolean;
   validationStateTextProps: TValidationStateTextProps | undefined;
-}) => {
+}): { isSuccess: boolean; isError: boolean; isWarning: boolean } => {
   const { name, isDisabled, validationStateTextProps } = opts;
 
   const { errors, dirtyFields } = useFormState({ name });

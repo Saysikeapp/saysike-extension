@@ -1,7 +1,5 @@
 import { z } from "zod";
 
-// Do not edit these schemas without planning a change to the API response
-
 const dateField = z
   .union([z.string(), z.date()])
   .transform((val) => (typeof val === "string" ? new Date(val) : val))
