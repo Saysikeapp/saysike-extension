@@ -18,7 +18,7 @@ TBD
 
 ### Environment variables
 
-You can copy `.env.sample` to `.env.local` & `.env.production`
+You can copy `.env.sample` to `.env`
 
 ### Install
 

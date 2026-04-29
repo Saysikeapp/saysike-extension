@@ -22,7 +22,7 @@ function assertEnvPlugin(): Plugin {
       if (missing.length > 0) {
         throw new Error(
           `Build failed — missing required env vars: ${missing.join(", ")}\n` +
-            `Set them in .env.production or as CI environment variables.`,
+            `Set them in corresponding .env file.`,
         );
       }
     },
