@@ -2,7 +2,10 @@ import {
   BackgroundEventMethods,
   BrowserMessageRequest,
 } from "@/lib/utils/browserAPI";
-import { getOrCacheStoreDetails } from "./cache/cache";
+import {
+  getOrCacheProductComparison,
+  getOrCacheStoreDetails,
+} from "./cache/cache";
 
 export default defineBackground(() => {
   console.log("Saysike Background is running...");
@@ -35,8 +38,25 @@ export default defineBackground(() => {
         // MANDATORY: Indicates async response, which Chrome API requires. This keeps the line open.
         return true;
 
+      case BackgroundEventMethods.GET_PRODUCT_COMPARISON:
+        getOrCacheProductComparison(req.data)
+          .then((result) => {
+            sendResponse({ result });
+            return true;
+          })
+          .catch((err) => {
+            sendResponse({ result: null });
+            console.error("Error fetching product comparison:", err);
+            return true;
+          });
+
+        // MANDATORY: Indicates async response, which Chrome API requires. This keeps the line open.
+        return true;
+
       default:
-        throw new Error(`Unknown Method: ${req.method as string}`);
+        throw new Error(
+          `Unknown Method: ${String((req as { method: string }).method)}`,
+        );
     }
   });
 });

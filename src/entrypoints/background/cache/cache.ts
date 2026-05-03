@@ -1,5 +1,9 @@
-import { GETStoreDetailsResponse } from "@/lib/schemas";
+import {
+  GETStoreDetailsResponse,
+  POSTCompareProductResponse,
+} from "@/lib/schemas";
 import { filterAndFormatDomain } from "@/lib/utils";
+import { getProductComparisonEvent } from "../events/getProductComparisonEvent";
 import { getStoreDetailsEvent } from "../events/getStoreDetailsEvent";
 import { setIconBadge } from "../utils/setIconBadge";
 
@@ -10,7 +14,13 @@ type CacheEntry = {
   timestamp: number;
 };
 
+type AsinCacheEntry = {
+  data: POSTCompareProductResponse | null;
+  timestamp: number;
+};
+
 const storeCache: Record<string, CacheEntry> = {};
+const asinCache: Record<string, AsinCacheEntry> = {};
 
 export const getOrCacheStoreDetails = async ({
   url,
@@ -56,5 +66,39 @@ export const getOrCacheStoreDetails = async ({
 export function clearCacheForTesting(): void {
   for (const key of Object.keys(storeCache)) {
     delete storeCache[key];
+  }
+}
+
+export const getOrCacheProductComparison = ({
+  asin,
+  url,
+  name,
+}: {
+  asin: string;
+  url: string;
+  name: string;
+}): Promise<POSTCompareProductResponse | null> => {
+  const now = Date.now();
+  const cached = asinCache[asin];
+
+  // (Disable cache on dev)
+  if (
+    cached &&
+    now - cached.timestamp < CACHE_TTL_MS &&
+    process.env.NODE_ENV !== "development"
+  ) {
+    return Promise.resolve(cached.data);
+  }
+
+  return getProductComparisonEvent({ url, asin, name }).then((data) => {
+    asinCache[asin] = { data, timestamp: now };
+    return data;
+  });
+};
+
+/** For use in tests only — resets the in-memory ASIN cache. */
+export function clearAsinCacheForTesting(): void {
+  for (const key of Object.keys(asinCache)) {
+    delete asinCache[key];
   }
 }
