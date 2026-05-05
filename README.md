@@ -122,7 +122,7 @@ Vitest also runs in ~1 s for the full suite because it reuses the Vite transform
 
 This project is licensed under the [GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0-only).
 
-In short: you are free to use, study, and modify this code, but any distributed or hosted modifications must also be released under the AGPL-3.0. See the [LICENSE](LICENSE.MD) file for the full terms.
+In short: you are free to use, study, and modify this code, but any distributed or hosted modifications must also be released under the AGPL-3.0. See the [LICENSE](LICENSE) file for the full terms.
 
 ### Brand Assets
 
