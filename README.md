@@ -116,8 +116,14 @@ Vitest also runs in ~1 s for the full suite because it reuses the Vite transform
 
 ## Contributing
 
-TBD - feel free to raise issues or submit PRs until I set up a clear guideline.
+- TBD - feel free to raise issues or submit PRs until I set up a clear guideline.
 
 ## License
 
-MIT
+This project is licensed under the [GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0-only).
+
+In short: you are free to use, study, and modify this code, but any distributed or hosted modifications must also be released under the AGPL-3.0. See the [LICENSE](LICENSE) file for the full terms.
+
+### Brand Assets
+
+The Saysike name, logo, and other brand assets are **not** covered by the AGPL-3.0 license and may not be reused, redistributed, or modified outside of this project without explicit written permission from Saysike Limited.
