@@ -118,6 +118,3 @@ Vitest also runs in ~1 s for the full suite because it reuses the Vite transform
 
 TBD - feel free to raise issues or submit PRs until I set up a clear guideline.
 
-## License
-
-MIT
