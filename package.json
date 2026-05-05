@@ -4,6 +4,7 @@
   "private": true,
   "description": "Saysike Browser Extension",
   "type": "module",
+  "license": "AGPL-3.0-only",
   "scripts": {
     "dev": "wxt --mv3",
     "dev:firefox": "wxt --mv3 -b firefox",
