@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.9...saysike-extension-v0.1.0) (2026-05-06)
+
+
+### Features
+
+* add license ([1cfe936](https://github.com/Saysikeapp/saysike-extension/commit/1cfe936854f26d9cbc576e6d67c007261ef9ee47))
+
 ## [0.0.9](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.8...saysike-extension-v0.0.9) (2026-04-28)
 
 
