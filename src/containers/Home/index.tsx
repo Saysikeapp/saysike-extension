@@ -19,7 +19,7 @@ export const Home = ({ show }: { show: boolean }): JSX.Element => {
       )}
 
       {!storeDetails.isPending ? (
-        storeDetails?.data?.store ? (
+        storeDetails?.data?.merchants?.length ? (
           <Store></Store>
         ) : (
           <Browse></Browse>

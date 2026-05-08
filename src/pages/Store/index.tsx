@@ -5,8 +5,8 @@ import CodesAndDealsList from "./CodesAndDealsList";
 
 export const Store = (): ReactNode => {
   const storeDetails = useStoreDetails().data;
-  const codes = storeDetails?.codes ?? [];
-  const deals = storeDetails?.deals ?? [];
+  const codes = storeDetails?.merchants[0]?.codes ?? [];
+  const deals = storeDetails?.merchants[0]?.deals ?? [];
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredOffersCount, setFilteredOffersCount] = useState(0);

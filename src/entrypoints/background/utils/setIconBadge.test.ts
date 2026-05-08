@@ -10,10 +10,10 @@ const TAB_ID = 1;
 describe("setIconBadge", () => {
   it("sets badge with the total code + deal count when both exist", () => {
     const data = createMockStoreDetailsResponse({
-      codes: [{ ...createMockStoreDetailsResponse().codes[0] }],
+      codes: [{ ...createMockStoreDetailsResponse().merchants[0].codes[0] }],
       deals: [
         {
-          ...createMockStoreDetailsResponse().deals[0],
+          ...createMockStoreDetailsResponse().merchants[0].deals[0],
           promotion_id: 99,
         },
       ],
@@ -31,7 +31,7 @@ describe("setIconBadge", () => {
     });
   });
 
-  it("sets badge text to '!' when store exists but no codes or deals", () => {
+  it("sets badge text to '!' when merchant exists but no codes or deals", () => {
     const data = createMockStoreDetailsResponse({ codes: [], deals: [] });
 
     setIconBadge(data, TAB_ID);

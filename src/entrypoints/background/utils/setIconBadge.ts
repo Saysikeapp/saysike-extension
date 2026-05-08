@@ -4,21 +4,24 @@ export const setIconBadge = (
   result: GETStoreDetailsResponse,
   tabId: number,
 ): void => {
+  const allCodes = result.merchants.flatMap((m) => m.codes);
+  const allDeals = result.merchants.flatMap((m) => m.deals);
+
   // Code or deals = number displayed
-  if (result.codes?.length || result.deals?.length) {
+  if (allCodes.length || allDeals.length) {
     void browser.action.setBadgeBackgroundColor({
       color: "#6a0dad",
       tabId,
     });
 
     void browser.action.setBadgeText({
-      text: (result.codes.length + result.deals.length).toString(),
+      text: (allCodes.length + allDeals.length).toString(),
       tabId,
     });
   }
 
-  // If still store, highlight to user
-  else if (result.store) {
+  // If merchant matched but no promotions, highlight to user
+  else if (result.merchants.length > 0) {
     void browser.action.setBadgeBackgroundColor({
       color: "#6a0dad",
       tabId,

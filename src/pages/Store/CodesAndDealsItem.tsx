@@ -22,7 +22,7 @@ const checkIsToday = (dateToCheck: Date): boolean => {
 export const CodesAndDealsItem = ({
   item,
 }: {
-  item: GETStoreDetailsResponse["codes"][number];
+  item: GETStoreDetailsResponse["merchants"][number]["codes"][number];
 }): JSX.Element => {
   const [openModal, setOpenModal] = useState(false);
 
