@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.1.0...saysike-extension-v0.2.0) (2026-05-08)
+
+
+### Features
+
+* update names to match new endpoint ([1707ebf](https://github.com/Saysikeapp/saysike-extension/commit/1707ebf8ac4100e409c8aee3bdc06edc3bd166fe))
+* update names to match new endpoint ([65405be](https://github.com/Saysikeapp/saysike-extension/commit/65405be95a1c7a75c65281f4fdec764ca13652f5))
+
 ## [0.1.0](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.9...saysike-extension-v0.1.0) (2026-05-06)
 
 
