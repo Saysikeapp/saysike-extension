@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.2.0...saysike-extension-v0.2.1) (2026-05-14)
+
+
+### Bug Fixes
+
+* bump version to add firefox release step ([eefe2ad](https://github.com/Saysikeapp/saysike-extension/commit/eefe2ad70d7643a519113ceb844076a8e54b526a))
+
 ## [0.2.0](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.1.0...saysike-extension-v0.2.0) (2026-05-08)
 
 
