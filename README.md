@@ -9,14 +9,14 @@
 
 ## Browser Support
 
-| Browser | Status         | Install                                                                                       |
-| ------- | -------------- | --------------------------------------------------------------------------------------------- |
-| Chrome  | ✅ Available   | [Chrome Web Store](https://chromewebstore.google.com/detail/pgokhihamcfcdlfamkdcjbfmipgaddlf) |
-| Brave   | ✅ Available   | [Chrome Web Store](https://chromewebstore.google.com/detail/pgokhihamcfcdlfamkdcjbfmipgaddlf) |
-| Firefox | ✅ Available   | [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/saysike)                           |
-| Edge    | 🔜 Coming soon | —                                                                                             |
-| Opera   | 🔜 Coming soon | —                                                                                             |
-| Safari  | 🔜 Coming soon | —                                                                                             |
+| Browser                                                                                          | Status         | Install                                                                                       |
+| ------------------------------------------------------------------------------------------------ | -------------- | --------------------------------------------------------------------------------------------- |
+| <img src="https://cdn.saysike.com/color/google-chrome.svg" width="16" valign="middle" /> Chrome  | ✅ Available   | [Chrome Web Store](https://chromewebstore.google.com/detail/pgokhihamcfcdlfamkdcjbfmipgaddlf) |
+| <img src="https://cdn.saysike.com/color/brave-browser.svg" width="16" valign="middle" /> Brave   | ✅ Available   | [Chrome Web Store](https://chromewebstore.google.com/detail/pgokhihamcfcdlfamkdcjbfmipgaddlf) |
+| <img src="https://cdn.saysike.com/color/firefox.svg" width="16" valign="middle" /> Firefox       | ✅ Available   | [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/saysike)                           |
+| <img src="https://cdn.saysike.com/color/microsoft-edge.svg" width="16" valign="middle" /> Edge   | 🔜 Coming soon | —                                                                                             |
+| <img src="https://cdn.saysike.com/color/opera.svg" width="16" valign="middle" /> Opera           | 🔜 Coming soon | —                                                                                             |
+| <img src="https://cdn.saysike.com/color/safari-browser.svg" width="16" valign="middle" /> Safari | 🔜 Coming soon | —                                                                                             |
 
 ---
 
