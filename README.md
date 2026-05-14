@@ -1,129 +1,51 @@
-# Saysike Browser Extension
+<div align="center">
+  <img src="public/icon-128.png" alt="Saysike" width="80" />
+  <h1>Saysike</h1>
+  <p><strong>Save money while you shop — automatically.</strong></p>
+  <p>Saysike is a free, open-source browser extension that surfaces coupon codes, deals, and price insights as you browse.</p>
+</div>
 
-[Saysike](https://saysike.com) is an open-source browser extension aiming to be the best online shopping tool while being transparent & maintaining integrity.
+---
 
-It offers you coupon codes while browsing, with plans to implement price comparisons, history & tracking in the near future.
+## Browser Support
 
-Currently available on Chrome, Brave, and Edge through the Chrome Web Store: https://chromewebstore.google.com/detail/saysike/pgokhihamcfcdlfamkdcjbfmipgaddlf and waiting on approval by Firefox.
+| Browser | Status         | Install                                                                                       |
+| ------- | -------------- | --------------------------------------------------------------------------------------------- |
+| Chrome  | ✅ Available   | [Chrome Web Store](https://chromewebstore.google.com/detail/pgokhihamcfcdlfamkdcjbfmipgaddlf) |
+| Brave   | ✅ Available   | [Chrome Web Store](https://chromewebstore.google.com/detail/pgokhihamcfcdlfamkdcjbfmipgaddlf) |
+| Firefox | ✅ Available   | [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/saysike)                           |
+| Edge    | 🔜 Coming soon | —                                                                                             |
+| Opera   | 🔜 Coming soon | —                                                                                             |
+| Safari  | 🔜 Coming soon | —                                                                                             |
 
-## Project Structure
+---
 
-TBD
+## Features
 
-## Getting Started
+- 🏷️ **Coupon codes** — automatically surfaces working codes for the store you're on
+- 🛍️ **Deals** — highlights active promotions and offers
+- ⚡ **Instant** — results appear the moment you open the extension, no searching needed
 
-### Prerequisites
+---
 
-- [Bun](https://bun.sh) 1.3.8
+## API
 
-### Environment variables
+Please refer to the Saysike [Terms of Use](https://saysike.com)
 
-You can copy `.env.sample` to `.env`
+---
 
-### Install
+## Documentation
 
-```bash
-bun install
-```
+| Topic                      | Link                               |
+| -------------------------- | ---------------------------------- |
+| Contributing & local setup | [CONTRIBUTING.md](CONTRIBUTING.md) |
+| Changelog                  | [CHANGELOG.md](CHANGELOG.md)       |
+| License                    | [LICENSE.md](LICENSE.md)           |
 
-### Dev (extension)
-
-Chromium:
-
-```bash
-bun dev
-```
-
-Firefox:
-
-```bash
-bun dev:firefox
-```
-
-Then load the `.output/chrome-mv3-dev` or `.output/firefox-mv3-dev` directory as an unpacked extension in your browser.
-
-### Build
-
-Chromium:
-
-```bash
-bun build
-```
-
-Firefox:
-
-```bash
-bun build:firefox
-```
-
-Then load the `.output/chrome-mv3` or `.output/firefox-mv3` directory as an unpacked extension in your browser.
-
-### Type check
-
-```bash
-bun check-types
-```
-
-### Lint
-
-```bash
-bun lint
-bun lint:fix
-```
-
-### Tests
-
-```bash
-bun run test          # run once
-bun run test:watch    # watch mode
-bun run test:coverage # coverage report
-```
-
-> **Note:** use `bun run test`, not `bun test`. The latter invokes Bun's native test runner, which is incompatible with the Vitest-based test setup (see [Architecture decisions](#architecture-decisions) below).
-
-### Storybook (UI components)
-
-```bash
-bun storybook
-```
-
-## Tech Stack
-
-| Area                      | Technology        |
-| ------------------------- | ----------------- |
-| Runtime & Package manager | Bun 1.3.8         |
-| Extension framework       | WXT               |
-| UI                        | React 19          |
-| Styling                   | Tailwind CSS v4   |
-| Data fetching             | TanStack Query v5 |
-| Auth (client)             | better-auth       |
-| Schemas                   | Zod v4            |
-| Testing                   | Vitest + MSW      |
-
-## Architecture decisions
-
-### Vitest over Bun's native test runner
-
-Although Bun is the project's runtime and package manager, the test suite uses **Vitest** (`bun run test`) rather than Bun's built-in runner (`bun test`). Three technical constraints drive this:
-
-1. **`import.meta.env.WXT_*` variables** — WXT bakes these into the bundle at Vite build time. Vitest runs inside the same Vite pipeline, so it can stub them with `vi.stubEnv()`. Bun's runner has no knowledge of Vite's transform layer and sees every `import.meta.env.*` as `undefined`.
-
-2. **MSW network interception** — `msw/node` patches Node's undici-based `fetch`. Bun ships its own native fetch implementation that MSW's interceptors do not hook into, causing requests to either fail or leak to the network.
-
-3. **Module mocking** — Vitest hoists `vi.mock()` calls to the top of the module graph at transform time, which is how mocking background scripts and utility modules works here. Bun's `mock.module()` has different semantics and would require a full rewrite of every mock.
-
-Vitest also runs in ~1 s for the full suite because it reuses the Vite transform cache, so there is no meaningful speed trade-off.
-
-## Contributing
-
-- TBD - feel free to raise issues or submit PRs until I set up a clear guideline.
+---
 
 ## License
 
-This project is licensed under the [GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0-only).
+Licensed under the [GNU Affero General Public License v3.0](LICENSE.md) (AGPL-3.0-only). You are free to use, study, and modify this code, but any distributed or hosted modifications must also be released under the AGPL-3.0.
 
-In short: you are free to use, study, and modify this code, but any distributed or hosted modifications must also be released under the AGPL-3.0. See the [LICENSE](LICENSE) file for the full terms.
-
-### Brand Assets
-
-The Saysike name, logo, and other brand assets are **not** covered by the AGPL-3.0 license and may not be reused, redistributed, or modified outside of this project without explicit written permission from Saysike Limited.
+> The Saysike name, logo, and brand assets are **not** covered by the AGPL-3.0 and may not be reused without explicit written permission from Saysike Limited.
