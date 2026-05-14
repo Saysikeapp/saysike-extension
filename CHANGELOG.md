@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.2.1...saysike-extension-v0.2.2) (2026-05-14)
+
+
+### Bug Fixes
+
+* force bump again for release ([e168ade](https://github.com/Saysikeapp/saysike-extension/commit/e168ade388ad46c4de5f70a81c99fe712440998b))
+
 ## [0.2.1](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.2.0...saysike-extension-v0.2.1) (2026-05-14)
 
 
