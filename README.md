@@ -63,7 +63,7 @@
 
 ## API
 
-Please refer to the Saysike [Terms of Use](https://saysike.com)
+Please refer to the Saysike [Terms of Use](https://saysike.com/terms)
 
 ---
 
