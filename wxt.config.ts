@@ -38,7 +38,7 @@ export default defineConfig({
   manifest: ({ browser }) => ({
     name: isDev ? "Saysike (DEV)" : "Saysike",
     description: "Save money and more with Saysike!",
-    icons: isDev ? { 128: "Recurso 26.png" } : { 128: "icon-128.png" },
+    icons: isDev ? { 128: "icon-128-white.png" } : { 128: "icon-128.png" },
     permissions: ["tabs", "activeTab"],
     ...(browser === "firefox" && {
       browser_specific_settings: {
