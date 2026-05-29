@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.2.2...saysike-extension-v1.0.0) (2026-05-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* new logo, first major release!
+
+### Features
+
+* new logo, first major release! ([d3f68cf](https://github.com/Saysikeapp/saysike-extension/commit/d3f68cf330b8900472bc9ee9a97e7f11d152fb31))
+
 ## [0.2.2](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.2.1...saysike-extension-v0.2.2) (2026-05-14)
 
 
