@@ -20,7 +20,7 @@ const Login = ({ setView: _setView }: { setView: () => void }): ReactNode => {
       )}
 
       <img
-        src="/icon-128.png"
+        src="/logo-icon.png"
         alt="Saysike"
         className="w-14 h-14 select-none"
         draggable={false}

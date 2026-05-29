@@ -12,7 +12,7 @@ export const Header = (): ReactNode => {
         {storeDetails.data?.merchants[0]?.merchant && page === "home" ? (
           <>
             <img
-              src="/icon-128.png"
+              src="/logo-icon.png"
               alt="Saysike"
               className="h-7 m-auto left-2.5 top-2.25 absolute select-none"
               draggable={false}
@@ -34,7 +34,7 @@ export const Header = (): ReactNode => {
           </>
         ) : (
           <img
-            src="/cut-logo.png"
+            src="/saysike-logo.png"
             alt="Saysike"
             className="relative block w-60 h-10 object-contain m-auto select-none"
             draggable={false}
