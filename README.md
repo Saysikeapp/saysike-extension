@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/icon-128.png" alt="Saysike" width="80" />
+  <img src="public/logo-icon.png" alt="Saysike" width="80" />
   <h1>Saysike</h1>
   <p><strong>Save money while you shop — automatically.</strong></p>
   <p>Saysike is a free, open-source browser extension that surfaces coupon codes, deals, and price insights as you browse.</p>
