@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.0.1...saysike-extension-v1.0.2) (2026-05-30)
+
+
+### Bug Fixes
+
+* also highlight prices in code display text ([19cfec5](https://github.com/Saysikeapp/saysike-extension/commit/19cfec50726227394e08fe0e44defa3ba1a05ba4))
+* better titles for codes ([62f3df8](https://github.com/Saysikeapp/saysike-extension/commit/62f3df87c2a21106ecb232b1d45986536a6c033e))
+
 ## [1.0.1](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.0.0...saysike-extension-v1.0.1) (2026-05-30)
 
 
