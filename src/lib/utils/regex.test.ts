@@ -1,4 +1,4 @@
-import { emailRegex, percentInStringRegex } from "./regex";
+import { emailRegex, percentInStringRegex, priceOrPercentRegex } from "./regex";
 
 describe("emailRegex", () => {
   it.each([
@@ -49,5 +49,41 @@ describe("percentInStringRegex", () => {
 
   it("has the global flag set", () => {
     expect(percentInStringRegex.global).toBe(true);
+  });
+});
+
+describe("priceOrPercentRegex", () => {
+  it("matches a currency symbol prefix", () => {
+    const matches = "Save £100 today".match(priceOrPercentRegex);
+    expect(matches).toEqual(["£100"]);
+  });
+
+  it("matches a currency symbol suffix", () => {
+    const matches = "Only 50$ left".match(priceOrPercentRegex);
+    expect(matches).toEqual(["50$"]);
+  });
+
+  it("matches a decimal price", () => {
+    const matches = "Was $9.99".match(priceOrPercentRegex);
+    expect(matches).toEqual(["$9.99"]);
+  });
+
+  it("matches a percentage", () => {
+    const matches = "Get 20% off".match(priceOrPercentRegex);
+    expect(matches).toEqual(["20%"]);
+  });
+
+  it("matches prices and percentages together", () => {
+    const matches = "Save £50 or get 10% off".match(priceOrPercentRegex);
+    expect(matches).toEqual(["£50", "10%"]);
+  });
+
+  it("returns null when no match", () => {
+    const matches = "No deals here".match(priceOrPercentRegex);
+    expect(matches).toBeNull();
+  });
+
+  it("has the global flag set", () => {
+    expect(priceOrPercentRegex.global).toBe(true);
   });
 });

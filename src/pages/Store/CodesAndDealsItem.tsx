@@ -5,7 +5,7 @@ import { MoreDetailsModal } from "./MoreDetailsModal";
 import { CodeDealButton } from "./CodeDealButton";
 import dayjs from "dayjs";
 import { highlightText } from "@/components/common/HighlightText";
-import { percentInStringRegex } from "@/lib/utils";
+import { priceOrPercentRegex } from "@/lib/utils";
 import { GETStoreDetailsResponse } from "@/lib/schemas";
 
 const checkIsToday = (dateToCheck: Date): boolean => {
@@ -45,7 +45,7 @@ export const CodesAndDealsItem = ({
 
   const formattedTitle = highlightText(
     displayTitle,
-    percentInStringRegex,
+    priceOrPercentRegex,
     "font-bold text-lg text-secondary",
   );
 
