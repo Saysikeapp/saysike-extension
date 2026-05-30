@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.0.0...saysike-extension-v1.0.1) (2026-05-30)
+
+
+### Bug Fixes
+
+* add slight padding to logo ([562d797](https://github.com/Saysikeapp/saysike-extension/commit/562d79796d0bfde816a3834ee1b2b03965cb2852))
+* update logo font ([906a953](https://github.com/Saysikeapp/saysike-extension/commit/906a953b3da875466044c620b0e63a0d1e8f52de))
+
 ## [1.0.0](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.2.2...saysike-extension-v1.0.0) (2026-05-29)
 
 
