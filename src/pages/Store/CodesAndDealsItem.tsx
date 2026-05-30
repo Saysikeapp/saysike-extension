@@ -29,7 +29,9 @@ export const CodesAndDealsItem = ({
   // This can be refined to not show copy when many clicked, later ticket
   const [copied, setCopied] = useState(false);
 
-  const { ends, title } = item;
+  const { ends, title, code, description } = item;
+
+  const displayTitle = title === code && description ? description : title;
 
   const endsSoonWarningState =
     ends && new Date(ends).getTime() - 172800000 < new Date().getTime()
@@ -42,7 +44,7 @@ export const CodesAndDealsItem = ({
     dayjs(date).format("ddd D MMMM YYYY");
 
   const formattedTitle = highlightText(
-    title,
+    displayTitle,
     percentInStringRegex,
     "font-bold text-lg text-secondary",
   );
