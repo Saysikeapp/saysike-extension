@@ -36,7 +36,7 @@ export default defineConfig({
   dev: { server: { port: 3002 } },
   webExt: { disabled: true },
   manifest: ({ browser }) => ({
-    name: isDev ? "Saysike (DEV)" : "Saysike",
+    name: isDev ? "Saysike (DEV)" : "Saysike - Shop Smarter",
     description: "Save money and more with Saysike!",
     icons: isDev ? { 128: "icon-128-white.png" } : { 128: "icon-128.png" },
     permissions: ["tabs", "activeTab"],
