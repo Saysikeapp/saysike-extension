@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.0.2...saysike-extension-v1.1.0) (2026-06-01)
+
+
+### Features
+
+* add basic onboarding flow on install ([5fb2fe0](https://github.com/Saysikeapp/saysike-extension/commit/5fb2fe0637a4a3bbcf7c7ec0e5c19266e38be7fa))
+
 ## [1.0.2](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.0.1...saysike-extension-v1.0.2) (2026-05-30)
 
 
