@@ -52,7 +52,6 @@ jobs:
         run: |
           bun wxt submit \
             --firefox-zip .output/*-firefox.zip \
-            --firefox-sources-zip .output/*-sources.zip \
             --firefox-channel listed
         env:
           FIREFOX_EXTENSION_ID: ${{ secrets.FIREFOX_EXTENSION_ID }}
