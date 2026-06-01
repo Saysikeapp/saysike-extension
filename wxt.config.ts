@@ -43,7 +43,7 @@ export default defineConfig({
     ...(browser === "firefox" && {
       browser_specific_settings: {
         gecko: {
-          id: "extension@saysike.com",
+          id: "joseph@saysike.com",
           data_collection_permissions: {
             required: ["browsingActivity"],
             optional: ["authenticationInfo"],
