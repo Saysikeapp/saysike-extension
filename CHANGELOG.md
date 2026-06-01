@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.1.1...saysike-extension-v1.1.2) (2026-06-01)
+
+
+### Bug Fixes
+
+* update store listing title ([3b28ba3](https://github.com/Saysikeapp/saysike-extension/commit/3b28ba34fa8d2cf6d7db80b6a3466610ed975894))
+
 ## [1.1.1](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.1.0...saysike-extension-v1.1.1) (2026-06-01)
 
 
