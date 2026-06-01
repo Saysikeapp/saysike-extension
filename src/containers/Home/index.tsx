@@ -26,7 +26,7 @@ export const Home = ({ show }: { show: boolean }): JSX.Element => {
 
       <div
         className={cn(
-          "transition-opacity duration-300",
+          "h-full transition-opacity duration-300",
           storeDetails.isPending
             ? "opacity-0 pointer-events-none"
             : "opacity-100",
