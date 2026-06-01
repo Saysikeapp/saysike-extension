@@ -35,6 +35,7 @@ jobs:
   publish-firefox:
     name: Publish to Firefox Add-ons
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
 
@@ -52,6 +53,7 @@ jobs:
         run: |
           bun wxt submit \
             --firefox-zip .output/*-firefox.zip \
+            --firefox-sources-zip .output/*-sources.zip \
             --firefox-channel listed
         env:
           FIREFOX_EXTENSION_ID: ${{ secrets.FIREFOX_EXTENSION_ID }}
