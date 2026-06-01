@@ -1,0 +1,41 @@
+@import "../../lib/tailwind-config/styles.css";
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 0.5em;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
