@@ -19,7 +19,11 @@ export const PinToolbar = (): JSX.Element => {
       </div>
 
       <div className="w-full h-75 border-2 border-border rounded-xl flex items-center justify-center bg-surface-secondary overflow-hidden">
-        <img src="/demo/pin-to-toolbar.png" className="object-fill"></img>
+        <img
+          alt="Pin Saysike to your toolbar"
+          src="/demo/pin-to-toolbar.png"
+          className="object-fill"
+        />
       </div>
 
       <ol className="flex flex-col gap-3 list-none m-0 p-0">
