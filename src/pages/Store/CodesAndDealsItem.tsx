@@ -5,7 +5,7 @@ import { MoreDetailsModal } from "./MoreDetailsModal";
 import { CodeDealButton } from "./CodeDealButton";
 import dayjs from "dayjs";
 import { highlightText } from "@/components/common/HighlightText";
-import { percentInStringRegex } from "@/lib/utils";
+import { priceOrPercentRegex } from "@/lib/utils";
 import { GETStoreDetailsResponse } from "@/lib/schemas";
 
 const checkIsToday = (dateToCheck: Date): boolean => {
@@ -22,14 +22,16 @@ const checkIsToday = (dateToCheck: Date): boolean => {
 export const CodesAndDealsItem = ({
   item,
 }: {
-  item: GETStoreDetailsResponse["codes"][number];
+  item: GETStoreDetailsResponse["merchants"][number]["codes"][number];
 }): JSX.Element => {
   const [openModal, setOpenModal] = useState(false);
 
   // This can be refined to not show copy when many clicked, later ticket
   const [copied, setCopied] = useState(false);
 
-  const { ends, title } = item;
+  const { ends, title, code, description } = item;
+
+  const displayTitle = title === code && description ? description : title;
 
   const endsSoonWarningState =
     ends && new Date(ends).getTime() - 172800000 < new Date().getTime()
@@ -42,8 +44,8 @@ export const CodesAndDealsItem = ({
     dayjs(date).format("ddd D MMMM YYYY");
 
   const formattedTitle = highlightText(
-    title,
-    percentInStringRegex,
+    displayTitle,
+    priceOrPercentRegex,
     "font-bold text-lg text-secondary",
   );
 

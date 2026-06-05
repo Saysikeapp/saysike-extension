@@ -10,7 +10,7 @@ export const CodeDealButton = ({
   setCopied,
   className,
 }: {
-  item: GETStoreDetailsResponse["codes"][number];
+  item: GETStoreDetailsResponse["merchants"][number]["codes"][number];
   copied: boolean;
   setCopied: React.Dispatch<React.SetStateAction<boolean>>;
   className?: string;

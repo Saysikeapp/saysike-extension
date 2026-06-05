@@ -9,34 +9,34 @@ export const Header = (): ReactNode => {
   return (
     <div className="overflow-hidden bg-surface-primary h-12 w-full border-b-2 border-b-primary shrink-0">
       <div id="header" className="h-full w-full flex justify-center">
-        {storeDetails.data?.store && page === "home" ? (
+        {storeDetails.data?.merchants[0]?.merchant && page === "home" ? (
           <>
             <img
-              src="/icon-128.png"
+              src="/logo-icon.png"
               alt="Saysike"
               className="h-7 m-auto left-2.5 top-2.25 absolute select-none"
               draggable={false}
               id="side-logo"
             />
-            {storeDetails.data?.store?.logo_url ? (
+            {storeDetails.data.merchants[0].merchant.logo_url ? (
               <img
-                src={storeDetails.data.store.logo_url}
-                alt={storeDetails.data.store.store_name}
+                src={storeDetails.data.merchants[0].merchant.logo_url}
+                alt={storeDetails.data.merchants[0].merchant.store_name}
                 className="relative block object-contain max-h-10 max-w-75 m-auto select-none"
                 draggable={false}
                 id="logo"
               />
             ) : (
               <h2 className="m-auto max-w-75 overflow-hidden text-ellipsis whitespace-nowrap">
-                {storeDetails.data?.store?.store_name}
+                {storeDetails.data.merchants[0].merchant.store_name}
               </h2>
             )}
           </>
         ) : (
           <img
-            src="/cut-logo.png"
+            src="/saysike-logo.png"
             alt="Saysike"
-            className="relative block w-60 h-10 object-contain m-auto select-none"
+            className="relative block w-60 h-10 object-contain m-auto select-none py-1.5"
             draggable={false}
             id="logo"
           />

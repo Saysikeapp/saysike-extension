@@ -1,13 +1,16 @@
 import { GETStoreDetailsResponse } from "@/lib/schemas";
-import type { z } from "zod";
 
-type Store = NonNullable<GETStoreDetailsResponse["store"]>;
-type Promotion = GETStoreDetailsResponse["codes"][number];
+type MerchantWithPromotions = GETStoreDetailsResponse["merchants"][number];
+type Merchant = MerchantWithPromotions["merchant"];
+type Promotion = MerchantWithPromotions["codes"][number];
 
-export const createMockStore = (overrides: Partial<Store> = {}): Store => ({
-  store_id: 1,
+export const createMockMerchant = (
+  overrides: Partial<Merchant> = {},
+): Merchant => ({
+  merchant_id: 1,
   store_name: "Test Store",
-  store_url: "test-store.com",
+  network_name: "Test Network",
+  primary_domain: "test-store.com",
   store_tracking_url: "https://track.test-store.com",
   logo_url: "https://cdn.test-store.com/logo.png",
   currency: "GBP",
@@ -15,11 +18,7 @@ export const createMockStore = (overrides: Partial<Store> = {}): Store => ({
 });
 
 export const createMockPromotion = (
-  overrides: Partial<
-    z.infer<
-      typeof import("@/lib/schemas").GETStoreDetailsResponse
-    >["codes"][number]
-  > = {},
+  overrides: Partial<Promotion> = {},
 ): Promotion => ({
   promotion_id: 1,
   code: "SAVE10",
@@ -46,16 +45,18 @@ export const createMockDeal = (overrides: Partial<Promotion> = {}): Promotion =>
   });
 
 export const createMockStoreDetailsResponse = (
-  overrides: Partial<GETStoreDetailsResponse> = {},
+  overrides: Partial<MerchantWithPromotions> = {},
 ): GETStoreDetailsResponse => ({
-  store: createMockStore(),
-  codes: [createMockPromotion()],
-  deals: [createMockDeal()],
-  ...overrides,
+  merchants: [
+    {
+      merchant: createMockMerchant(),
+      codes: [createMockPromotion()],
+      deals: [createMockDeal()],
+      ...overrides,
+    },
+  ],
 });
 
 export const createEmptyStoreDetailsResponse = (): GETStoreDetailsResponse => ({
-  store: null,
-  codes: [],
-  deals: [],
+  merchants: [],
 });

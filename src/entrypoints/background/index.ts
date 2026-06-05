@@ -10,6 +10,17 @@ import {
 export default defineBackground(() => {
   console.log("Saysike Background is running...");
 
+  // Install/update listener
+  browser.runtime.onInstalled.addListener(({ reason }) => {
+    if (reason !== "install") return;
+
+    // Open the onboarding page on fresh install
+    void browser.tabs.create({
+      url: browser.runtime.getURL("/onboarding.html"),
+      active: true,
+    });
+  });
+
   // Load store details when a tab is updated (e.g., URL change)
   browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     // Only trigger when the URL has changed and is fully loaded

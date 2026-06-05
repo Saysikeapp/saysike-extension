@@ -12,8 +12,9 @@ const CodesAndDealsList = ({
   filteredOffersCount: number;
 }): ReactNode => {
   const storeDetails = useStoreDetails().data;
-  const codes = storeDetails?.codes ?? [];
-  const deals = storeDetails?.deals ?? [];
+  const merchant = storeDetails?.merchants[0];
+  const codes = merchant?.codes ?? [];
+  const deals = merchant?.deals ?? [];
 
   return (
     <>
@@ -29,8 +30,8 @@ const CodesAndDealsList = ({
           </h2>
           <p className="text-xs text-text-primary leading-snug m-0">
             We couldn&apos;t find any active codes or deals for{" "}
-            {storeDetails?.store?.store_name}. We may still be able to offer
-            price history on some products.
+            {merchant?.merchant.store_name}. We may still be able to offer price
+            history on some products.
           </p>
         </div>
       ) : null}

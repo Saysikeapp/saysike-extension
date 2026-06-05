@@ -35,12 +35,23 @@ export default defineConfig({
   srcDir: "src",
   dev: { server: { port: 3002 } },
   webExt: { disabled: true },
-  manifest: {
-    name: isDev ? "Saysike (DEV)" : "Saysike",
+  manifest: ({ browser }) => ({
+    name: isDev ? "Saysike (DEV)" : "Saysike - Shop Smarter",
     description: "Save money and more with Saysike!",
-    icons: isDev ? { 128: "icon-dev-128.png" } : { 128: "icon-128.png" },
+    icons: isDev ? { 128: "icon-128-white.png" } : { 128: "icon-128.png" },
     permissions: ["tabs", "activeTab"],
-  },
+    ...(browser === "firefox" && {
+      browser_specific_settings: {
+        gecko: {
+          id: "extension@saysike.com",
+          data_collection_permissions: {
+            required: ["browsingActivity"],
+            optional: ["authenticationInfo"],
+          },
+        },
+      },
+    }),
+  }),
   vite: () => ({
     plugins: [tailwindcss(), assertEnvPlugin()],
     resolve: {

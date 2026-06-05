@@ -18,12 +18,8 @@
     "paths": {
       "@": ["./src"],
       "@/*": ["./src/*"],
-      "~": ["./src"],
-      "~/*": ["./src/*"],
       "@@": ["."],
       "@@/*": ["./*"],
-      "~~": ["."],
-      "~~/*": ["./*"],
       "@saysike/ui": ["./src/lib/ui/src"],
       "@saysike/ui/*": ["./src/lib/ui/src/*"],
       "@saysike/utils": ["./src/lib/utils"],

@@ -35,9 +35,19 @@ jobs:
           WXT_BASE_CLIENT_URI: ${{ vars.WXT_BASE_CLIENT_URI }}
           WXT_BASE_SERVER_URI: ${{ vars.WXT_BASE_SERVER_URI }}
 
+      - name: Build & zip (Firefox)
+        if: >-
+          (github.event_name == 'push' && startsWith(github.ref_name, 'release-please--')) ||
+          (github.event_name == 'pull_request' && startsWith(github.head_ref, 'release-please--'))
+        run: bun run zip:firefox
+        env:
+          WXT_BASE_CLIENT_URI: ${{ vars.WXT_BASE_CLIENT_URI }}
+          WXT_BASE_SERVER_URI: ${{ vars.WXT_BASE_SERVER_URI }}
+
       - name: Dry-run submit (Chrome Web Store)
-        # Only runs on the release-please PR branch
-        if: startsWith(github.ref, 'refs/heads/release-please--')
+        if: >-
+          (github.event_name == 'push' && startsWith(github.ref_name, 'release-please--')) ||
+          (github.event_name == 'pull_request' && startsWith(github.head_ref, 'release-please--'))
         run: |
           VERSION=$(node -e "process.stdout.write(require('./package.json').version)")
           bunx wxt submit --dry-run \
@@ -47,3 +57,18 @@ jobs:
           CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
           CHROME_CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
           CHROME_REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+
+      - name: Dry-run submit (Firefox Add-ons)
+        if: >-
+          (github.event_name == 'push' && startsWith(github.ref_name, 'release-please--')) ||
+          (github.event_name == 'pull_request' && startsWith(github.head_ref, 'release-please--'))
+        run: |
+          VERSION=$(node -e "process.stdout.write(require('./package.json').version)")
+          bunx wxt submit --dry-run \
+            --firefox-zip .output/saysike-extension-${VERSION}-firefox.zip \
+            --firefox-sources-zip .output/saysike-extension-${VERSION}-sources.zip \
+            --firefox-channel listed
+        env:
+          FIREFOX_EXTENSION_ID: ${{ secrets.FIREFOX_EXTENSION_ID }}
+          FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}

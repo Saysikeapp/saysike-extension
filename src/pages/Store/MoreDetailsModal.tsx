@@ -21,7 +21,7 @@ export const MoreDetailsModal = ({
 }: {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-  item: GETStoreDetailsResponse["codes"][number];
+  item: GETStoreDetailsResponse["merchants"][number]["codes"][number];
   endsSoonWarningState: "error" | "warning" | null;
 }): ReactNode => {
   const [copied, setCopied] = useState(false);

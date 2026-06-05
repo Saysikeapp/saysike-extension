@@ -1,5 +1,89 @@
 # Changelog
 
+## [1.1.3](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.1.2...saysike-extension-v1.1.3) (2026-06-01)
+
+
+### Bug Fixes
+
+* bump version ([43d94d2](https://github.com/Saysikeapp/saysike-extension/commit/43d94d2e829a0eb159812b2fe275b0001d8da85a))
+
+## [1.1.2](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.1.1...saysike-extension-v1.1.2) (2026-06-01)
+
+
+### Bug Fixes
+
+* update store listing title ([3b28ba3](https://github.com/Saysikeapp/saysike-extension/commit/3b28ba34fa8d2cf6d7db80b6a3466610ed975894))
+
+## [1.1.1](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.1.0...saysike-extension-v1.1.1) (2026-06-01)
+
+
+### Bug Fixes
+
+* recenter page ([a195581](https://github.com/Saysikeapp/saysike-extension/commit/a1955812cc7a36a9685f193769e92c1d740f6afc))
+
+## [1.1.0](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.0.2...saysike-extension-v1.1.0) (2026-06-01)
+
+
+### Features
+
+* add basic onboarding flow on install ([5fb2fe0](https://github.com/Saysikeapp/saysike-extension/commit/5fb2fe0637a4a3bbcf7c7ec0e5c19266e38be7fa))
+
+## [1.0.2](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.0.1...saysike-extension-v1.0.2) (2026-05-30)
+
+
+### Bug Fixes
+
+* also highlight prices in code display text ([19cfec5](https://github.com/Saysikeapp/saysike-extension/commit/19cfec50726227394e08fe0e44defa3ba1a05ba4))
+* better titles for codes ([62f3df8](https://github.com/Saysikeapp/saysike-extension/commit/62f3df87c2a21106ecb232b1d45986536a6c033e))
+
+## [1.0.1](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.0.0...saysike-extension-v1.0.1) (2026-05-30)
+
+
+### Bug Fixes
+
+* add slight padding to logo ([562d797](https://github.com/Saysikeapp/saysike-extension/commit/562d79796d0bfde816a3834ee1b2b03965cb2852))
+* update logo font ([906a953](https://github.com/Saysikeapp/saysike-extension/commit/906a953b3da875466044c620b0e63a0d1e8f52de))
+
+## [1.0.0](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.2.2...saysike-extension-v1.0.0) (2026-05-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* new logo, first major release!
+
+### Features
+
+* new logo, first major release! ([d3f68cf](https://github.com/Saysikeapp/saysike-extension/commit/d3f68cf330b8900472bc9ee9a97e7f11d152fb31))
+
+## [0.2.2](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.2.1...saysike-extension-v0.2.2) (2026-05-14)
+
+
+### Bug Fixes
+
+* force bump again for release ([e168ade](https://github.com/Saysikeapp/saysike-extension/commit/e168ade388ad46c4de5f70a81c99fe712440998b))
+
+## [0.2.1](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.2.0...saysike-extension-v0.2.1) (2026-05-14)
+
+
+### Bug Fixes
+
+* bump version to add firefox release step ([eefe2ad](https://github.com/Saysikeapp/saysike-extension/commit/eefe2ad70d7643a519113ceb844076a8e54b526a))
+
+## [0.2.0](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.1.0...saysike-extension-v0.2.0) (2026-05-08)
+
+
+### Features
+
+* update names to match new endpoint ([1707ebf](https://github.com/Saysikeapp/saysike-extension/commit/1707ebf8ac4100e409c8aee3bdc06edc3bd166fe))
+* update names to match new endpoint ([65405be](https://github.com/Saysikeapp/saysike-extension/commit/65405be95a1c7a75c65281f4fdec764ca13652f5))
+
+## [0.1.0](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.9...saysike-extension-v0.1.0) (2026-05-06)
+
+
+### Features
+
+* add license ([1cfe936](https://github.com/Saysikeapp/saysike-extension/commit/1cfe936854f26d9cbc576e6d67c007261ef9ee47))
+
 ## [0.0.9](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v0.0.8...saysike-extension-v0.0.9) (2026-04-28)
 
 

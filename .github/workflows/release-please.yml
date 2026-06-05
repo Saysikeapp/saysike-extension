@@ -41,6 +41,13 @@ jobs:
           WXT_BASE_CLIENT_URI: ${{ vars.WXT_BASE_CLIENT_URI }}
           WXT_BASE_SERVER_URI: ${{ vars.WXT_BASE_SERVER_URI }}
 
+      - name: Build & zip (Firefox)
+        if: ${{ steps.release.outputs.pr }}
+        run: bun run zip:firefox
+        env:
+          WXT_BASE_CLIENT_URI: ${{ vars.WXT_BASE_CLIENT_URI }}
+          WXT_BASE_SERVER_URI: ${{ vars.WXT_BASE_SERVER_URI }}
+
       - name: Dry-run submit (Chrome Web Store)
         if: ${{ steps.release.outputs.pr }}
         run: |
@@ -52,3 +59,16 @@ jobs:
           CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
           CHROME_CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
           CHROME_REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+
+      - name: Dry-run submit (Firefox Add-ons)
+        if: ${{ steps.release.outputs.pr }}
+        run: |
+          VERSION=$(node -e "process.stdout.write(require('./package.json').version)")
+          bunx wxt submit --dry-run \
+            --firefox-zip .output/saysike-extension-${VERSION}-firefox.zip \
+            --firefox-sources-zip .output/saysike-extension-${VERSION}-sources.zip \
+            --firefox-channel listed
+        env:
+          FIREFOX_EXTENSION_ID: ${{ secrets.FIREFOX_EXTENSION_ID }}
+          FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
