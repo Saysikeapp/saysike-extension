@@ -1,11 +1,10 @@
 import { JSX, useState } from "react";
 import { Button, cn } from "@saysike/ui";
-import { Welcome } from "./steps/Welcome";
 import { PinToolbar } from "./steps/PinToolbar";
 import { HowItWorks } from "./steps/HowItWorks";
 import { AllDone } from "./steps/AllDone";
 
-const STEPS = [Welcome, PinToolbar, HowItWorks, AllDone];
+const STEPS = [PinToolbar, HowItWorks, AllDone];
 
 export const Onboarding = (): JSX.Element => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -38,7 +37,6 @@ export const Onboarding = (): JSX.Element => {
   return (
     <div className="min-h-screen bg-surface-primary flex items-center justify-center px-6 py-12">
       <div className="w-full max-w-md flex flex-col gap-10">
-        {/* Step content */}
         <div
           className={cn(
             "transition-opacity duration-150",
@@ -48,7 +46,6 @@ export const Onboarding = (): JSX.Element => {
           <StepComponent />
         </div>
 
-        {/* Step indicator dots */}
         <div className="flex justify-center gap-2">
           {STEPS.map((_, i) => (
             <div
@@ -61,7 +58,6 @@ export const Onboarding = (): JSX.Element => {
           ))}
         </div>
 
-        {/* Navigation */}
         <div className="flex justify-between items-center">
           <Button
             variant="ghost"
