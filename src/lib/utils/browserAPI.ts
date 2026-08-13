@@ -1,14 +1,28 @@
 export enum BackgroundEventMethods {
   GET_STORE_DETAILS = "getStoreDetails",
+  FIRE_COUPON_REFERRAL = "fireCouponReferral",
 }
 
-export type BrowserMessageRequest = {
-  method: BackgroundEventMethods.GET_STORE_DETAILS;
-  data: {
-    url: string;
-    tabId: number;
-  };
+export type GetStoreDetailsData = {
+  url: string;
+  tabId: number;
 };
+
+export type FireCouponReferralData = {
+  referralUrl: string;
+  promotionId: number;
+  merchantId: number | null;
+};
+
+export type BrowserMessageRequest =
+  | {
+      method: BackgroundEventMethods.GET_STORE_DETAILS;
+      data: GetStoreDetailsData;
+    }
+  | {
+      method: BackgroundEventMethods.FIRE_COUPON_REFERRAL;
+      data: FireCouponReferralData;
+    };
 
 export const getActiveTabId = (): Promise<number | undefined> => {
   return new Promise((resolve) => {

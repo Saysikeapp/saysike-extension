@@ -13,6 +13,7 @@ const CodesAndDealsList = ({
 }): ReactNode => {
   const storeDetails = useStoreDetails().data;
   const merchant = storeDetails?.merchants[0];
+  const merchantId = merchant?.merchant.merchant_id;
   const codes = merchant?.codes ?? [];
   const deals = merchant?.deals ?? [];
 
@@ -48,7 +49,13 @@ const CodesAndDealsList = ({
               return true;
           })
           .map((code) => {
-            return <CodesAndDealsItem key={code.promotion_id} item={code} />;
+            return (
+              <CodesAndDealsItem
+                key={code.promotion_id}
+                item={code}
+                merchantId={merchantId}
+              />
+            );
           })}
       </div>
 
@@ -72,7 +79,13 @@ const CodesAndDealsList = ({
               return true;
           })
           .map((deal) => {
-            return <CodesAndDealsItem key={deal.promotion_id} item={deal} />;
+            return (
+              <CodesAndDealsItem
+                key={deal.promotion_id}
+                item={deal}
+                merchantId={merchantId}
+              />
+            );
           })}
       </div>
     </>

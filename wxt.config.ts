@@ -39,7 +39,7 @@ export default defineConfig({
     name: isDev ? "Saysike (DEV)" : "Saysike - Shop Smarter",
     description: "Save money and more with Saysike!",
     icons: isDev ? { 128: "icon-128-white.png" } : { 128: "icon-128.png" },
-    permissions: ["tabs", "activeTab"],
+    permissions: ["tabs", "activeTab", "storage"],
     ...(browser === "firefox" && {
       browser_specific_settings: {
         gecko: {
