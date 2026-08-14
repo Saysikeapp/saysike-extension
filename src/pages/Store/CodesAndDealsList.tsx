@@ -14,6 +14,7 @@ const CodesAndDealsList = ({
   const storeDetails = useStoreDetails().data;
   const merchant = storeDetails?.merchants[0];
   const merchantId = merchant?.merchant.merchant_id;
+  const merchantName = merchant?.merchant.store_name;
   const codes = merchant?.codes ?? [];
   const deals = merchant?.deals ?? [];
 
@@ -54,6 +55,7 @@ const CodesAndDealsList = ({
                 key={code.promotion_id}
                 item={code}
                 merchantId={merchantId}
+                merchantName={merchantName}
               />
             );
           })}
@@ -84,6 +86,7 @@ const CodesAndDealsList = ({
                 key={deal.promotion_id}
                 item={deal}
                 merchantId={merchantId}
+                merchantName={merchantName}
               />
             );
           })}

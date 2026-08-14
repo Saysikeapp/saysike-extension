@@ -3,28 +3,18 @@ import { Button, Icon, Typography } from "@saysike/ui";
 
 import { MoreDetailsModal } from "./MoreDetailsModal";
 import { CodeDealButton } from "./CodeDealButton";
-import dayjs from "dayjs";
 import { highlightText } from "@/components/common/HighlightText";
-import { priceOrPercentRegex } from "@/lib/utils";
+import { priceOrPercentRegex, getExpiryLabel } from "@/lib/utils";
 import { GETStoreDetailsResponse } from "@/lib/schemas";
-
-const checkIsToday = (dateToCheck: Date): boolean => {
-  const today = new Date();
-  dateToCheck = new Date(dateToCheck);
-
-  return (
-    dateToCheck.getFullYear() === today.getFullYear() &&
-    dateToCheck.getMonth() === today.getMonth() &&
-    dateToCheck.getDate() === today.getDate()
-  );
-};
 
 export const CodesAndDealsItem = ({
   item,
   merchantId,
+  merchantName,
 }: {
   item: GETStoreDetailsResponse["merchants"][number]["codes"][number];
   merchantId?: number;
+  merchantName?: string;
 }): JSX.Element => {
   const [openModal, setOpenModal] = useState(false);
 
@@ -41,9 +31,6 @@ export const CodesAndDealsItem = ({
       : ends && new Date(ends).getTime() - 604800000 < new Date().getTime()
         ? "warning"
         : null; // Expires in next 7 days?
-
-  const formatDate = (date: Date): string =>
-    dayjs(date).format("ddd D MMMM YYYY");
 
   const formattedTitle = highlightText(
     displayTitle,
@@ -92,16 +79,8 @@ export const CodesAndDealsItem = ({
         </Button>
 
         <Typography.HelperText state={endsSoonWarningState || "normal"}>
-          {ends ? (
-            <>
-              {endsSoonWarningState && <Icon src="hour.svg" className="mr-1" />}
-              {checkIsToday(ends)
-                ? "Last Chance! Ends Today!"
-                : `Expires: ${formatDate(ends)}`}
-            </>
-          ) : (
-            "Unknown"
-          )}
+          {endsSoonWarningState && <Icon src="hour.svg" className="mr-1" />}
+          {getExpiryLabel(ends)}
         </Typography.HelperText>
 
         <MoreDetailsModal
@@ -110,6 +89,7 @@ export const CodesAndDealsItem = ({
           item={item}
           endsSoonWarningState={endsSoonWarningState}
           merchantId={merchantId}
+          merchantName={merchantName}
         />
       </div>
     </div>
