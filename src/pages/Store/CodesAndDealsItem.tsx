@@ -21,8 +21,10 @@ const checkIsToday = (dateToCheck: Date): boolean => {
 
 export const CodesAndDealsItem = ({
   item,
+  merchantId,
 }: {
   item: GETStoreDetailsResponse["merchants"][number]["codes"][number];
+  merchantId?: number;
 }): JSX.Element => {
   const [openModal, setOpenModal] = useState(false);
 
@@ -60,7 +62,12 @@ export const CodesAndDealsItem = ({
   return (
     <div className="px-3 py-2.5 border-b border-border">
       <div className="flex flex-row justify-between items-center content-center">
-        <CodeDealButton item={item} copied={copied} setCopied={setCopied} />
+        <CodeDealButton
+          item={item}
+          copied={copied}
+          setCopied={setCopied}
+          merchantId={merchantId}
+        />
 
         {copied && (
           <Typography.HelperText state="success" className="mt-0 pl-1">
@@ -102,6 +109,7 @@ export const CodesAndDealsItem = ({
           setShowModal={setOpenModal}
           item={item}
           endsSoonWarningState={endsSoonWarningState}
+          merchantId={merchantId}
         />
       </div>
     </div>

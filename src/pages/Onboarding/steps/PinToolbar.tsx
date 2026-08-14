@@ -11,7 +11,7 @@ export const PinToolbar = (): JSX.Element => {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2 text-center">
         <h1 className="text-2xl font-bold text-text-primary m-0">
-          Pin Saysike to your toolbar
+          Pin Saysike to your toolbar (Recommended)
         </h1>
         <p className="text-sm text-text-secondary m-0">
           Keep Saysike one click away so you never miss a deal.

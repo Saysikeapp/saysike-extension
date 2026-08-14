@@ -3,6 +3,8 @@ import { vi } from "vitest";
 export const browserMock = {
   tabs: {
     query: vi.fn(),
+    create: vi.fn(),
+    remove: vi.fn(),
   },
   runtime: {
     sendMessage: vi.fn(),
@@ -10,8 +12,14 @@ export const browserMock = {
     getManifest: vi.fn().mockReturnValue({ version: "0.0.0" }),
   },
   action: {
-    setBadgeBackgroundColor: vi.fn(),
-    setBadgeText: vi.fn(),
+    setBadgeBackgroundColor: vi.fn().mockResolvedValue(undefined),
+    setBadgeText: vi.fn().mockResolvedValue(undefined),
+  },
+  storage: {
+    session: {
+      get: vi.fn(),
+      set: vi.fn(),
+    },
   },
 };
 

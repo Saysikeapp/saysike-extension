@@ -18,11 +18,13 @@ export const MoreDetailsModal = ({
   setShowModal,
   item,
   endsSoonWarningState,
+  merchantId,
 }: {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   item: GETStoreDetailsResponse["merchants"][number]["codes"][number];
   endsSoonWarningState: "error" | "warning" | null;
+  merchantId?: number;
 }): ReactNode => {
   const [copied, setCopied] = useState(false);
 
@@ -123,7 +125,12 @@ export const MoreDetailsModal = ({
               <Icon src="arrow-left.svg" className="mr-2" /> Back
             </Button> */}
 
-            <CodeDealButton item={item} copied={copied} setCopied={setCopied} />
+            <CodeDealButton
+              item={item}
+              copied={copied}
+              setCopied={setCopied}
+              merchantId={merchantId}
+            />
             <div className="w-max m-auto">
               {copied && (
                 <Typography.HelperText state="success">

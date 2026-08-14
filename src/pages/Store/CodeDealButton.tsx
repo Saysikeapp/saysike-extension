@@ -3,19 +3,25 @@ import { Button, Icon } from "@saysike/ui";
 import { cn } from "@saysike/ui";
 import { GETStoreDetailsResponse } from "@/lib/schemas";
 import { ReactNode } from "react";
+import {
+  BackgroundEventMethods,
+  sendRuntimeMessage,
+} from "@/lib/utils/browserAPI";
 
 export const CodeDealButton = ({
   item,
   copied: _copied,
   setCopied,
   className,
+  merchantId,
 }: {
   item: GETStoreDetailsResponse["merchants"][number]["codes"][number];
   copied: boolean;
   setCopied: React.Dispatch<React.SetStateAction<boolean>>;
   className?: string;
+  merchantId?: number;
 }): ReactNode => {
-  const { code, tracking_url } = item;
+  const { code, tracking_url, promotion_id } = item;
 
   return (
     <Button
@@ -26,17 +32,22 @@ export const CodeDealButton = ({
           return;
         }
 
-        // This is a bit annoying I guess, but works for now.
-        // Better solution to be looked into TODO <><><>
-        // !copied &&
-        //   browser.tabs.create({
-        //     url: tracking_url,
-        //     active: false,
-        //     // true,  - can make true to tab to it. lets see
-        //   });
-
         void navigator.clipboard.writeText(code);
         setCopied(true);
+
+        // Record affiliate attribution for this coupon.
+        if (tracking_url) {
+          void sendRuntimeMessage({
+            method: BackgroundEventMethods.FIRE_COUPON_REFERRAL,
+            data: {
+              referralUrl: tracking_url,
+              promotionId: promotion_id,
+              merchantId: merchantId ?? null,
+            },
+          }).catch(() => {
+            // Best-effort — a failed referral fire shouldn't disrupt copying the code.
+          });
+        }
       }}
       size={"lg"}
       variant={"secondary"}

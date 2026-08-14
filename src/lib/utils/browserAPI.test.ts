@@ -4,6 +4,7 @@ import {
   getCurrentUrl,
   sendRuntimeMessage,
   BackgroundEventMethods,
+  BrowserMessageRequest,
 } from "./browserAPI";
 
 type TabStub = { id?: number; url?: string };
@@ -42,7 +43,7 @@ describe("getCurrentUrl", () => {
 });
 
 describe("sendRuntimeMessage", () => {
-  const message = {
+  const message: BrowserMessageRequest = {
     method: BackgroundEventMethods.GET_STORE_DETAILS,
     data: { url: "https://example.com", tabId: 1 },
   };
