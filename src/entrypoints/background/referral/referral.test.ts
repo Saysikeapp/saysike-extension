@@ -2,6 +2,7 @@ import { browserMock } from "@/test/mocks/browser";
 import {
   closeReferralTab,
   fireCouponReferral,
+  forgetPendingReferralTab,
   isPendingReferralTab,
 } from "./referral";
 
@@ -106,10 +107,18 @@ describe("fireCouponReferral", () => {
 
     await expect(isPendingReferralTab(7)).resolves.toBe(true);
   });
-});
 
-describe("closeReferralTab", () => {
-  it("removes a pending referral tab and clears it from the pending list", async () => {
+  it("does not mark a merchant attributed when tabs.create fails, so a retry can still fire", async () => {
+    browserMock.tabs.create.mockRejectedValueOnce(new Error("blocked"));
+
+    await expect(
+      fireCouponReferral({
+        referralUrl: "https://refer.example.com/go",
+        promotionId: 1,
+        merchantId: 100,
+      }),
+    ).rejects.toThrow("blocked");
+
     browserMock.tabs.create.mockResolvedValue({ id: 7 });
     await fireCouponReferral({
       referralUrl: "https://refer.example.com/go",
@@ -117,15 +126,77 @@ describe("closeReferralTab", () => {
       merchantId: 100,
     });
 
+    expect(browserMock.tabs.create).toHaveBeenCalledTimes(2);
+  });
+
+  it("does not mark a merchant attributed when tabs.create returns no tab id", async () => {
+    browserMock.tabs.create.mockResolvedValueOnce({ id: undefined });
+
+    await fireCouponReferral({
+      referralUrl: "https://refer.example.com/go",
+      promotionId: 1,
+      merchantId: 100,
+    });
+
+    browserMock.tabs.create.mockResolvedValue({ id: 7 });
+    await fireCouponReferral({
+      referralUrl: "https://refer.example.com/go",
+      promotionId: 1,
+      merchantId: 100,
+    });
+
+    expect(browserMock.tabs.create).toHaveBeenCalledTimes(2);
+  });
+
+  it("serializes concurrent calls for the same merchant so only one tab opens", async () => {
+    browserMock.tabs.create.mockResolvedValue({ id: 7 });
+
+    await Promise.all([
+      fireCouponReferral({
+        referralUrl: "https://refer.example.com/go",
+        promotionId: 1,
+        merchantId: 100,
+      }),
+      fireCouponReferral({
+        referralUrl: "https://refer.example.com/go",
+        promotionId: 1,
+        merchantId: 100,
+      }),
+    ]);
+
+    expect(browserMock.tabs.create).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("closeReferralTab", () => {
+  it("removes the tab", async () => {
     await closeReferralTab(7);
 
     expect(browserMock.tabs.remove).toHaveBeenCalledWith(7);
+  });
+
+  it("does not throw if the tab is already gone", async () => {
+    browserMock.tabs.remove.mockRejectedValueOnce(new Error("No tab"));
+
+    await expect(closeReferralTab(7)).resolves.toBeUndefined();
+  });
+});
+
+describe("forgetPendingReferralTab", () => {
+  it("clears a pending tab id from bookkeeping", async () => {
+    browserMock.tabs.create.mockResolvedValue({ id: 7 });
+    await fireCouponReferral({
+      referralUrl: "https://refer.example.com/go",
+      promotionId: 1,
+      merchantId: 100,
+    });
+
+    await forgetPendingReferralTab(7);
+
     await expect(isPendingReferralTab(7)).resolves.toBe(false);
   });
 
   it("is a no-op for a tab id that isn't pending", async () => {
-    await closeReferralTab(999);
-
-    expect(browserMock.tabs.remove).not.toHaveBeenCalled();
+    await expect(forgetPendingReferralTab(999)).resolves.toBeUndefined();
   });
 });

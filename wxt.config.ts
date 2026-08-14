@@ -44,6 +44,8 @@ export default defineConfig({
       browser_specific_settings: {
         gecko: {
           id: "extension@saysike.com",
+          // browser.storage.session is only supported from Firefox 115+.
+          strict_min_version: "115.0",
           data_collection_permissions: {
             required: ["browsingActivity"],
             optional: ["authenticationInfo"],

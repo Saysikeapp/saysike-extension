@@ -2,6 +2,17 @@ const ATTRIBUTED_KEYS_KEY = "attributedKeys";
 const PENDING_REFERRAL_TAB_IDS_KEY = "pendingReferralTabIds";
 const REFERRAL_TAB_TIMEOUT_MS = 6000;
 
+let mutexQueue: Promise<void> = Promise.resolve();
+
+function runExclusive<T>(fn: () => Promise<T>): Promise<T> {
+  const run = mutexQueue.then(fn);
+  mutexQueue = run.then(
+    () => undefined,
+    () => undefined,
+  );
+  return run;
+}
+
 /**
  * Affiliate cookies are set per merchant, not per coupon — so dedupe on
  * merchantId where we have one (the normal case) rather than promotionId,
@@ -32,12 +43,13 @@ const getPendingReferralTabIds = async (): Promise<number[]> => {
 
 /**
  * Opens a coupon's referral URL in an inactive tab to record affiliate
- * attribution, then lets the background's tabs.onUpdated listener (or the
- * timeout below) close it. No-ops if this merchant was already attributed
- * this browser session, so trying several codes for the same store — or
- * re-copying the same code — doesn't keep reopening tabs.
+ * attribution, then lets the background's tabs.onUpdated/onRemoved
+ * listeners (or the timeout below) close it and reconcile bookkeeping.
+ * Nothing happens if this merchant was already attributed this browser session, so
+ * trying several codes for the same store — or re-copying the same code —
+ * doesn't keep reopening tabs.
  */
-export const fireCouponReferral = async ({
+export const fireCouponReferral = ({
   referralUrl,
   promotionId,
   merchantId,
@@ -45,48 +57,54 @@ export const fireCouponReferral = async ({
   referralUrl: string;
   promotionId: number;
   merchantId: number | null;
-}): Promise<void> => {
-  const key = getAttributionKey({ promotionId, merchantId });
-  const attributedKeys = await getAttributedKeys();
-  if (attributedKeys.includes(key)) return;
+}): Promise<void> =>
+  runExclusive(async () => {
+    const key = getAttributionKey({ promotionId, merchantId });
+    const attributedKeys = await getAttributedKeys();
+    if (attributedKeys.includes(key)) return;
 
-  await browser.storage.session.set({
-    [ATTRIBUTED_KEYS_KEY]: [...attributedKeys, key],
+    const tab = await browser.tabs.create({
+      url: referralUrl,
+      active: false,
+    });
+    if (tab.id === undefined) return;
+    const tabId = tab.id;
+
+    // Only mark this merchant attributed once we know a tab actually
+    // opened — otherwise a failed tabs.create would permanently block
+    // retries for this merchant for the rest of the session.
+    await browser.storage.session.set({
+      [ATTRIBUTED_KEYS_KEY]: [...attributedKeys, key],
+    });
+
+    const pendingIds = await getPendingReferralTabIds();
+    await browser.storage.session.set({
+      [PENDING_REFERRAL_TAB_IDS_KEY]: [...pendingIds, tabId],
+    });
+
+    setTimeout(() => {
+      void closeReferralTab(tabId);
+    }, REFERRAL_TAB_TIMEOUT_MS);
   });
-
-  const tab = await browser.tabs.create({ url: referralUrl, active: false });
-  if (tab.id === undefined) return;
-
-  const tabId = tab.id;
-  const pendingIds = await getPendingReferralTabIds();
-  await browser.storage.session.set({
-    [PENDING_REFERRAL_TAB_IDS_KEY]: [...pendingIds, tabId],
-  });
-
-  setTimeout(() => {
-    void closeReferralTab(tabId);
-  }, REFERRAL_TAB_TIMEOUT_MS);
-};
 
 export const isPendingReferralTab = async (tabId: number): Promise<boolean> => {
   const pendingIds = await getPendingReferralTabIds();
   return pendingIds.includes(tabId);
 };
 
-/** Closes a pending referral tab. Safe to call twice (e.g. once the
- * redirect completes and once from the timeout)
- */
 export const closeReferralTab = async (tabId: number): Promise<void> => {
-  const pendingIds = await getPendingReferralTabIds();
-  if (!pendingIds.includes(tabId)) return;
-
-  await browser.storage.session.set({
-    [PENDING_REFERRAL_TAB_IDS_KEY]: pendingIds.filter((id) => id !== tabId),
-  });
-
   try {
     await browser.tabs.remove(tabId);
-  } catch {
-    // Tab may have already been closed by the user — nothing to do.
+  } catch (err) {
+    console.error("Failed to close referral tab:", err);
   }
 };
+
+export const forgetPendingReferralTab = (tabId: number): Promise<void> =>
+  runExclusive(async () => {
+    const pendingIds = await getPendingReferralTabIds();
+    if (!pendingIds.includes(tabId)) return;
+    await browser.storage.session.set({
+      [PENDING_REFERRAL_TAB_IDS_KEY]: pendingIds.filter((id) => id !== tabId),
+    });
+  });

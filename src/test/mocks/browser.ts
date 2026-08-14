@@ -12,8 +12,8 @@ export const browserMock = {
     getManifest: vi.fn().mockReturnValue({ version: "0.0.0" }),
   },
   action: {
-    setBadgeBackgroundColor: vi.fn(),
-    setBadgeText: vi.fn(),
+    setBadgeBackgroundColor: vi.fn().mockResolvedValue(undefined),
+    setBadgeText: vi.fn().mockResolvedValue(undefined),
   },
   storage: {
     session: {
