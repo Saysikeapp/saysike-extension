@@ -14,12 +14,14 @@ export const CodeDealButton = ({
   setCopied,
   className,
   merchantId,
+  variant = "secondary",
 }: {
   item: GETStoreDetailsResponse["merchants"][number]["codes"][number];
   copied: boolean;
   setCopied: React.Dispatch<React.SetStateAction<boolean>>;
   className?: string;
   merchantId?: number;
+  variant?: "primary" | "secondary";
 }): ReactNode => {
   const { code, tracking_url, promotion_id } = item;
 
@@ -50,7 +52,7 @@ export const CodeDealButton = ({
         }
       }}
       size={"lg"}
-      variant={"secondary"}
+      variant={variant}
       className={cn("min-w-45 select-none rounded-xs", className)}
     >
       {code ? (

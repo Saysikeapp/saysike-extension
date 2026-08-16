@@ -7,4 +7,5 @@ export * from "./Modal";
 export * from "./Shared";
 export * from "./TextInput";
 export * from "./ThemeToggle";
+export * from "./Tooltip";
 export * from "./Typography";
