@@ -4,7 +4,11 @@ import { Button, Icon, Typography } from "@saysike/ui";
 import { MoreDetailsModal } from "./MoreDetailsModal";
 import { CodeDealButton } from "./CodeDealButton";
 import { highlightText } from "@/components/common/HighlightText";
-import { priceOrPercentRegex, getExpiryLabel } from "@/lib/utils";
+import {
+  priceOrPercentRegex,
+  getExpiryLabel,
+  getDisplayTitle,
+} from "@/lib/utils";
 import { GETStoreDetailsResponse } from "@/lib/schemas";
 
 export const CodesAndDealsItem = ({
@@ -23,7 +27,7 @@ export const CodesAndDealsItem = ({
 
   const { ends, title, code, description } = item;
 
-  const displayTitle = title === code && description ? description : title;
+  const displayTitle = getDisplayTitle(title, code, description);
 
   const endsSoonWarningState =
     ends && new Date(ends).getTime() - 172800000 < new Date().getTime()

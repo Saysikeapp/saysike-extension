@@ -31,6 +31,7 @@ export const CodeDetailsModal = ({
   const [copied, setCopied] = useState(false);
 
   const {
+    code,
     description,
     ends,
     exclusive,
@@ -41,6 +42,12 @@ export const CodeDetailsModal = ({
     updated_at,
   } = item;
 
+  const usesDescriptionAsTitle = title === code && !!description;
+  const displayTitle = usesDescriptionAsTitle ? description : title;
+  const descriptionText =
+    !usesDescriptionAsTitle && description?.length
+      ? description
+      : "No description available";
   const expiryLabel = getExpiryLabel(ends);
   const expiryIcon = endsSoonWarningState ? "priority-warning.svg" : "time.svg";
 
@@ -54,7 +61,9 @@ export const CodeDetailsModal = ({
           <p className="text-2xs uppercase tracking-widest text-text-tertiary mb-1">
             Code
           </p>
-          <h1 className="text-lg font-bold leading-snug pr-4 mb-3">{title}</h1>
+          <h1 className="text-lg font-bold leading-snug pr-4 mb-3">
+            {displayTitle}
+          </h1>
 
           <div className="flex flex-row items-center gap-4 flex-wrap mb-4">
             {exclusive && (
@@ -83,7 +92,7 @@ export const CodeDetailsModal = ({
           <div className="h-px bg-border mb-4" />
 
           <p className="text-sm text-text-secondary leading-relaxed mb-4">
-            {description?.length ? description : "No description available"}
+            {descriptionText}
           </p>
 
           <Accordion type="single" collapsible>
