@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.1.4...saysike-extension-v1.2.0) (2026-08-16)
+
+
+### Features
+
+* add tooltip component ([0a3f632](https://github.com/Saysikeapp/saysike-extension/commit/0a3f63230a3130ecdd3c2550308c20294cb5d946))
+* finalise more details layouts ([0bf32e5](https://github.com/Saysikeapp/saysike-extension/commit/0bf32e5eedf6d931594f56a747f8494ca210c2e4))
+
 ## [1.1.4](https://github.com/Saysikeapp/saysike-extension/compare/saysike-extension-v1.1.3...saysike-extension-v1.1.4) (2026-08-14)
 
 
