@@ -37,7 +37,8 @@ export default defineConfig({
   webExt: { disabled: true },
   manifest: ({ browser }) => ({
     name: isDev ? "Saysike (DEV)" : "Saysike - Shop Smarter",
-    description: "Save money and more with Saysike!",
+    description:
+      "Save money with Saysike - Find the best coupons, deals and more!",
     icons: isDev ? { 128: "icon-128-white.png" } : { 128: "icon-128.png" },
     permissions: ["tabs", "activeTab", "storage"],
     ...(browser === "firefox" && {
