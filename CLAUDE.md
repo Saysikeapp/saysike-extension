@@ -1,4 +1,4 @@
-# Copilot Instructions — Saysike Browser Extension
+# CLAUDE.md — Saysike Browser Extension
 
 This repo uses `AGENTS.md` as an all-round AI coding-agent instruction file.
 
